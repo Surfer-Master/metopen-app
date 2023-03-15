@@ -2,7 +2,7 @@
     $server = "localhost";
     $user = "root";
     $password = "";
-    $database = "project_mikroprosesor";
+    $database = "";
 
     $conn = mysqli_connect($server, $user, $password, $database);
 
