@@ -3,7 +3,7 @@
 $data = json_decode(file_get_contents('php://input'), true);
 if (!$data == NULL) {
 
-    # code...
+    # code....
     print_r($data);
 
     print("var_dump");
