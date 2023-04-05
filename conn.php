@@ -1,13 +1,11 @@
 <?php
-    $server = "localhost";
-    $user = "root";
-    $password = "";
-    $database = "";
+$server = "localhost";
+$user = "root";
+$password = "";
+$database = "metopen-app";
 
-    $conn = mysqli_connect($server, $user, $password, $database);
+$mysqli = new mysqli($server, $user, $password, $database);
 
-    if ($conn->connect_error) {
-        die("Database Connection Failed: " . $conn->connect_error);
-    }
-
-?>
+if ($mysqli->connect_error) {
+    error_log('Connection error: ' . $mysqli->connect_error);
+}
