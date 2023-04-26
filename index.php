@@ -169,7 +169,7 @@ if (!isset($_SESSION["login"])) {
             $dataSuhuLingkungan['datasets'][0]['data'][] = $row['suhu_lingkungan'];
 
             $dataKelembabanLingkungan['labels'][] = $row['created_at'];
-            $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembapan_lingkungan'];
+            $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembaban_lingkungan'];
         }
 
         $stmt->close();
@@ -243,10 +243,10 @@ if (!isset($_SESSION["login"])) {
                         <section class="mb-4">
                             <div class="card">
                                 <div class="card-header py-3 bg-warning">
-                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kelembapan</strong></h5>
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kelembaban</strong></h5>
                                 </div>
                                 <div class="card-body">
-                                    <canvas class="my-4 w-100" id="chartKelembapanLingkungan" height="380"></canvas>
+                                    <canvas class="my-4 w-100" id="chartKelembabanLingkungan" height="380"></canvas>
                                 </div>
                             </div>
                         </section>
@@ -307,7 +307,7 @@ if (!isset($_SESSION["login"])) {
         });
 
         let dataKelembabanLingkungan = <?= json_encode($dataKelembabanLingkungan) ?>;
-        let ctxKelembabanLingkungan = document.getElementById("chartKelembapanLingkungan").getContext("2d");
+        let ctxKelembabanLingkungan = document.getElementById("chartKelembabanLingkungan").getContext("2d");
         let chartKelembabanLingkungan = new Chart(ctxKelembabanLingkungan, {
             type: 'line',
             data: dataKelembabanLingkungan,
