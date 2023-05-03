@@ -29,46 +29,46 @@ if (!isset($_SESSION["login"])) {
 </head>
 
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
-            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link link-body-emphasis">
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="datatables.php" class="nav-link active">
-                        Data Grafik
-                    </a>
-                </li>
-                <li>
-                    <a href="nic.php" class="nav-link link-body-emphasis">
-                        NIC
-                    </a>
-                </li>
-
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle fs-3 me-2"></i>
-
-                    <strong>Admin</strong>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
+        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link link-body-emphasis">
+                    Dashboard
                 </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li>
-                        <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Log out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            </li>
+            <li>
+                <a href="datatables.php" class="nav-link active">
+                    Data Grafik
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link link-body-emphasis">
+                    NIC
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-3 me-2"></i>
+
+                <strong><?= $_SESSION['admin-name'] ?></strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li>
+                    <form action="logout.php" method="POST">
+                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="main-content" style="overflow-y: auto;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg">
@@ -77,7 +77,7 @@ if (!isset($_SESSION["login"])) {
                     </a>
                 </div>
             </div>
-            <div class="row m-2 mt-5">
+            <div class="row m-2 mt-4">
                 <div class="col-md-12 shadow-lg border border-0 rounded-4">
                     <div class="container p-3">
                         <div class="row">
@@ -115,37 +115,43 @@ if (!isset($_SESSION["login"])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                        include 'conn.php';
-                                        $employee = mysqli_query($mysqli,"select * from data");
-                                        $no = 1;
-                                        while($row = mysqli_fetch_array($employee)){
-                                            echo "<tr>
-                                            <td>".$no."</td>
-                                            <td>".$row['created_at'] = date("H:i:s")."</td>
-                                            <td>".$row['ph_air']."</td>
-                                            <td>".$row['suhu_air']."</td>
-                                            <td>".$row['kekeruhan']."</td>
-                                            <td>".$row['suhu_lingkungan']."</td>
-                                            <td>".$row['kelembaban_lingkungan']."</td>
-                                            <td></td>
-                                            <td>
-                                                <a class='text-decoration-none' href='grafik.php'>
-                                                    <i class='bi bi-journal-text me-2'></i>Detail                                                                                        
-                                                </a>
-                                                </td>
-                                            </tr>";
-                                            $no++;
-                                        }
+                                    require 'conn.php';
+                                    $query = "SELECT * FROM data";
+                                    $stmt = $mysqli->prepare($query);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+
+                                    $no = 1;
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>
+                                                <td>" . $no . "</td>
+                                                <td>" . $row['created_at'] = date("H:i:s") . "</td>
+                                                <td>" . $row['ph_air'] . "</td>
+                                                <td>" . $row['suhu_air'] . "</td>
+                                                <td>" . $row['kekeruhan'] . "</td>
+                                                <td>" . $row['suhu_lingkungan'] . "</td>
+                                                <td>" . $row['kelembaban_lingkungan'] . "</td>
+                                                <td></td>
+                                                <td>
+                                                    <a class='text-decoration-none' href='grafik.php'>
+                                                        <i class='bi bi-journal-text me-2'></i>Detail                                                                                        
+                                                    </a>
+                                                    </td>
+                                                </tr>";
+                                        $no++;
+                                    }
+                                    $stmt->close();
+                                    $mysqli->close();
                                     ?>
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/sidebars.js"></script>

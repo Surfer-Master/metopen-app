@@ -32,7 +32,7 @@ if (isset($_SESSION["login"])) {
 				$_SESSION["login"] = true;
 				$_SESSION["login"] = true;
 
-				// $_SESSION['admin-name'] = $row['name'];
+				$_SESSION['admin-name'] = $row['name'];
 				$_SESSION['admin-username'] = $row['username'];
 
 				header("location: index.php");

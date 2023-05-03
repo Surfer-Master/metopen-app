@@ -25,77 +25,77 @@ if (!isset($_SESSION["login"])) {
 </head>
 
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
-            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link link-body-emphasis">
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="datatables.php" class="nav-link link-body-emphasis">
-                        Data Grafik
-                    </a>
-                </li>
-                <li>
-                    <a href="nic.php" class="nav-link active">
-                        NIC
-                    </a>
-                </li>
-
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle fs-3 me-2"></i>
-
-                    <strong>Admin</strong>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
+        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link link-body-emphasis">
+                    Dashboard
                 </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li>
-                        <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Log    out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            </li>
+            <li class="nav-item">
+                <a href="datatables.php" class="nav-link link-body-emphasis">
+                    Data Grafik
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link active">
+                    NIC
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-3 me-2"></i>
+
+                <strong>Admin</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li>
+                    <form action="logout.php" method="POST">
+                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <?php
-        require 'conn.php';
-        $query = "SELECT * FROM nic";
-        $stmt = $mysqli->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    <?php
+    require 'conn.php';
+    $query = "SELECT * FROM nic";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        $dataDelay = array(
-            'labels' => array(),
-            'datasets' => array(
-                array(
-                    'label' => "Delay",
-                    'data' => array(),
-                    'fill' => false,
-                    'borderColor' => "red",
-                    'borderWidth' => 2,
-                    'tension' => 0.1
-                )
+    $dataDelay = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "Delay",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "red",
+                'borderWidth' => 2,
+                'tension' => 0.1
             )
-        );
+        )
+    );
 
-        while ($row = $result->fetch_assoc()) {
-            $dataDelay['labels'][] = $row['id'];
-            $dataDelay['datasets'][0]['data'][] = $row['delay_time'];
-        }
+    while ($row = $result->fetch_assoc()) {
+        $dataDelay['labels'][] = $row['id'];
+        $dataDelay['datasets'][0]['data'][] = $row['delay_time'];
+    }
 
-        $stmt->close();
-        $mysqli->close();
+    $stmt->close();
+    $mysqli->close();
 
-        ?>
+    ?>
+    <div class="main-content">
 
         <div class="container">
             <div class="row">
@@ -128,7 +128,7 @@ if (!isset($_SESSION["login"])) {
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
         let options = {
