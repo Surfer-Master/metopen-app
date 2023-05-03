@@ -16,7 +16,7 @@ if (!isset($_SESSION["login"])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | NIC</title>
+    <title>Dashboard | NIC</title>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public/css/sidebars.css" />
     <link rel="shortcut icon" href="public/image/untan.png" />
@@ -33,18 +33,17 @@ if (!isset($_SESSION["login"])) {
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="/Project/metopen-app/" class="nav-link link-body-emphasis">
-                        <!-- <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#home" />
-                        </svg> -->
-                        Home
+                    <a href="index.php" class="nav-link link-body-emphasis">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="datatables.php" class="nav-link link-body-emphasis">
+                        Data Grafik
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-link active">
-                        <!-- <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#table" />
-                        </svg> -->
+                    <a href="nic.php" class="nav-link active">
                         NIC
                     </a>
                 </li>
@@ -53,21 +52,14 @@ if (!isset($_SESSION["login"])) {
             <hr>
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
-
                     <i class="bi bi-person-circle fs-3 me-2"></i>
 
                     <strong>Admin</strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
                     <li>
                         <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Sign out</button>
+                            <button type="submit" class="dropdown-item" name="logout">Log    out</button>
                         </form>
                     </li>
                 </ul>
@@ -105,25 +97,37 @@ if (!isset($_SESSION["login"])) {
 
         ?>
 
-        <div class="container scrollarea">
-            <div class="row mb-6 justify-content-around">
-                <div class="col-md-6">
-                    <div class="container pt-4">
-                        <section class="mb-4">
-                            <div class="card">
-                                <div class="card-header py-3 bg-danger">
-                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Delay</strong></h5>
-                                </div>
-                                <div class="card-body">
-                                    <canvas class="my-4 w-100" id="chartDelay" height="380"></canvas>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 pt-3 pb-3 border-bottom bg">
+                    <a href="" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
+                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> NIC</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container scrollarea">
+                        <div class="row mb-6 justify-content-around">
+                            <div class="col-md-6">
+                                <div class="container pt-4">
+                                    <section class="mb-4">
+                                        <div class="card">
+                                            <div class="card-header py-3 bg-danger">
+                                                <h5 class="mb-0 text-center"><strong class="text-white">Grafik Delay</strong></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <canvas class="my-4 w-100" id="chartDelay" height="380"></canvas>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
 
     <script>
