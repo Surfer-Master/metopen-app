@@ -41,7 +41,7 @@ if (!isset($_SESSION["login"])) {
                     </a>
                 </li>
                 <li>
-                    <a href="/Project/metopen-app/nic.php" class="nav-link link-body-emphasis">
+                    <a href="/metopen-app/nic.php" class="nav-link link-body-emphasis">
                         <!-- <svg class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#table" />
                         </svg> -->
@@ -59,15 +59,10 @@ if (!isset($_SESSION["login"])) {
 
                     <strong>Admin</strong>
                 </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+                <ul class="dropdown-menu text-small shadow">                   
                     <li>
                         <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Sign out</button>
+                            <button type="submit" class="dropdown-item" name="logout">Log out</button>
                         </form>
                     </li>
                 </ul>
