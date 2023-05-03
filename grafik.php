@@ -8,6 +8,8 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit();
 }
+
+require 'conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +69,6 @@ if (!isset($_SESSION["login"])) {
         </div>
     </div>
     <?php
-    require 'conn.php';
     $query = "SELECT * FROM data";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();

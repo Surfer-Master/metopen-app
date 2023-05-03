@@ -6,7 +6,10 @@ if (!isset($_SESSION["login"])) {
     session_destroy();
     header("Location: login.php");
     exit();
+
 }
+
+require 'conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +118,6 @@ if (!isset($_SESSION["login"])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    require 'conn.php';
                                     $query = "SELECT * FROM data";
                                     $stmt = $mysqli->prepare($query);
                                     $stmt->execute();
