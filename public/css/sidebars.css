@@ -58,3 +58,17 @@ main {
 .scrollarea {
   overflow-y: auto;
 }
+
+.bg{
+  background-color: #ffffff;
+}
+
+.bgi{
+  padding-top: 22.5px;
+  padding-bottom: 22.5px;
+}
+
+.index{
+  position: fixed;
+  z-index: 9000;
+}
