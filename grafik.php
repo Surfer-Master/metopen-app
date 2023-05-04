@@ -266,6 +266,9 @@ if (!isset($_SESSION["login"])) {
 
         
     </main>
+    <script src="path/to/chartjs/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="path/to/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script>
 
     <script>
         let options = {
