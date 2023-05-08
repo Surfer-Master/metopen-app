@@ -109,6 +109,7 @@ if (!isset($_SESSION["login"])) {
                                         <th>Kekeruhan</th>
                                         <th>Lingkungan</th>
                                         <th>Kelembaban</th>
+                                        <th>Asal Air</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -127,9 +128,10 @@ if (!isset($_SESSION["login"])) {
                                             <td>".$row['kekeruhan']."</td>
                                             <td>".$row['suhu_lingkungan']."</td>
                                             <td>".$row['kelembaban_lingkungan']."</td>
-                                            <td></td>
+                                            <td>".$row['asal_air']."</td>
+                                            <td>".$row['status']."</td>
                                             <td>
-                                                <a class='text-decoration-none' href='grafik.php'>
+                                                <a class='text-decoration-none' href='grafik.php' data-id=".$row['id'].">
                                                     <i class='bi bi-journal-text me-2'></i>Detail                                                                                        
                                                 </a>
                                                 </td>
