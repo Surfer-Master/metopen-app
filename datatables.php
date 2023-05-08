@@ -7,8 +7,14 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit();
 }
-?>
 
+include "conn.php";
+include "./Model/data.model.php";
+include "./Controller/data.controller.php";
+include "./View/data.view.php";
+$datas = new DataView();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,30 +121,7 @@ if (!isset($_SESSION["login"])) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                        include 'conn.php';
-                                        $employee = mysqli_query($mysqli,"select * from data");
-                                        $no = 1;
-                                        while($row = mysqli_fetch_array($employee)){
-                                            echo "<tr>
-                                            <td>".$no."</td>
-                                            <td>".$row['created_at'] = date("H:i:s")."</td>
-                                            <td>".$row['ph_air']."</td>
-                                            <td>".$row['suhu_air']."</td>
-                                            <td>".$row['kekeruhan']."</td>
-                                            <td>".$row['suhu_lingkungan']."</td>
-                                            <td>".$row['kelembaban_lingkungan']."</td>
-                                            <td>".$row['asal_air']."</td>
-                                            <td>".$row['status']."</td>
-                                            <td>
-                                                <a class='text-decoration-none' href='grafik.php' data-id=".$row['id'].">
-                                                    <i class='bi bi-journal-text me-2'></i>Detail                                                                                        
-                                                </a>
-                                                </td>
-                                            </tr>";
-                                            $no++;
-                                        }
-                                    ?>
+                                    <?php $datas->show() ?>
                                 </tbody>
                                 
                             </table>
