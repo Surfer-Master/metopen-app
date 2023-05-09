@@ -97,7 +97,7 @@ if (!isset($_SESSION["login"])) {
                                         </svg>
                                             <div class="text-white fw-bolder fs-1 mb-2 mt-5 text-end"><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary" role="status" style="width: 18px;height:18px;"></div></div>
                                         </div>
-                                        <div class="fw-bold text-white text-end fs-6">Jumlah Data Bulan Ini</div>
+                                        <div class="fw-bold text-white text-end fs-6">Jumlah <br>Data Bulan Ini</div>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@ if (!isset($_SESSION["login"])) {
                                             </svg>
                                             <div class="text-white fw-bolder fs-1 mb-2 mt-5 text-end"><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary" role="status" style="width: 18px;height:18px;"></div></div>
                                         </div>
-                                        <div class="fw-bolder text-end fs-6 text-white">Jumlah Data Hari Ini</div>
+                                        <div class="fw-bolder text-end fs-6 text-white">Jumlah <br>Data Hari Ini</div>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@ if (!isset($_SESSION["login"])) {
                                             </svg>
                                             <div class="text-white fw-bolder fs-1 mb-2 mt-5 text-end"><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary" role="status" style="width: 18px;height:18px;"></div></div>
                                         </div>
-                                        <div class="fw-bold text-white text-end fs-6">Jumlah Layak Diminum</div>
+                                        <div class="fw-bold text-white text-end fs-6">Jumlah <br>Layak Diminum</div>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ if (!isset($_SESSION["login"])) {
                                             </svg>
                                             <div class="text-white fw-bolder fs-1 mb-2 mt-5 text-end"><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary me-1" role="status" style="width: 18px;height:18px;"></div><div class="spinner-grow text-secondary" role="status" style="width: 18px;height:18px;"></div></div>
                                         </div>
-                                        <div class="fw-bolder text-end fs-6 text-white">Jumlah Tidak Layak Diminum</div>
+                                        <div class="fw-bolder text-end fs-6 text-white">Jumlah <br>Tidak Layak Diminum</div>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +156,6 @@ if (!isset($_SESSION["login"])) {
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/sidebars.js"></script>
-    <script src="public/js/script.js"></script>
 </body>
 
 </html>

@@ -68,205 +68,204 @@ if (!isset($_SESSION["login"])) {
                 </ul>
             </div>
         </div>
-            <?php
-                require 'conn.php';
-                $query = "SELECT * FROM data";
-                $stmt = $mysqli->prepare($query);
-                $stmt->execute();
-                $result = $stmt->get_result();
+        <?php
+            require 'conn.php';
+            $query = "SELECT * FROM data";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-                $dataPhAir = array(
-                    'labels' => array(),
-                    'datasets' => array(
-                        array(
-                            'label' => "PH Air",
-                            'data' => array(),
-                            'fill' => false,
-                            'borderColor' => "red",
-                            'borderWidth' => 2,
-                            'tension' => 0.1
-                        )
+            $dataPhAir = array(
+                'labels' => array(),
+                'datasets' => array(
+                    array(
+                        'label' => "PH Air",
+                        'data' => array(),
+                        'fill' => false,
+                        'borderColor' => "red",
+                        'borderWidth' => 2,
+                        'tension' => 0.1
                     )
-                );
-                $dataSuhuAir = array(
-                    'labels' => array(),
-                    'datasets' => array(
-                        array(
-                            'label' => "Suhu Air",
-                            'data' => array(),
-                            'fill' => false,
-                            'borderColor' => "darkgreen",
-                            'borderWidth' => 2,
-                            'tension' => 0.1
-                        )
+                )
+            );
+            
+            $dataSuhuAir = array(
+                'labels' => array(),
+                'datasets' => array(
+                    array(
+                        'label' => "Suhu Air",
+                        'data' => array(),
+                        'fill' => false,
+                        'borderColor' => "darkgreen",
+                        'borderWidth' => 2,
+                        'tension' => 0.1
                     )
-                );
-                $dataKekeruhanAir = array(
-                    'labels' => array(),
-                    'datasets' => array(
-                        array(
-                            'label' => "Kekeruhan Air",
-                            'data' => array(),
-                            'fill' => false,
-                            'borderColor' => "grey",
-                            'borderWidth' => 2,
-                            'tension' => 0.1
-                        )
+                )
+            );
+            $dataKekeruhanAir = array(
+                'labels' => array(),
+                'datasets' => array(
+                    array(
+                        'label' => "Kekeruhan Air",
+                        'data' => array(),
+                        'fill' => false,
+                        'borderColor' => "grey",
+                        'borderWidth' => 2,
+                        'tension' => 0.1
                     )
-                );
-                $dataSuhuLingkungan = array(
-                    'labels' => array(),
-                    'datasets' => array(
-                        array(
-                            'label' => "Suhu Lingkungan",
-                            'data' => array(),
-                            'fill' => false,
-                            'borderColor' => "blue",
-                            'borderWidth' => 2,
-                            'tension' => 0.1
-                        )
+                )
+            );
+            $dataSuhuLingkungan = array(
+                'labels' => array(),
+                'datasets' => array(
+                    array(
+                        'label' => "Suhu Lingkungan",
+                        'data' => array(),
+                        'fill' => false,
+                        'borderColor' => "blue",
+                        'borderWidth' => 2,
+                        'tension' => 0.1
                     )
-                );
-                $dataKelembabanLingkungan = array(
-                    'labels' => array(),
-                    'datasets' => array(
-                        array(
-                            'label' => "Kelembaban Lingkungan",
-                            'data' => array(),
-                            'fill' => false,
-                            'borderColor' => "yellow",
-                            'borderWidth' => 2,
-                            'tension' => 0.1
-                        )
+                )
+            );
+            $dataKelembabanLingkungan = array(
+                'labels' => array(),
+                'datasets' => array(
+                    array(
+                        'label' => "Kelembaban Lingkungan",
+                        'data' => array(),
+                        'fill' => false,
+                        'borderColor' => "yellow",
+                        'borderWidth' => 2,
+                        'tension' => 0.1
                     )
-                );
+                )
+            );
 
-                while ($row = $result->fetch_assoc()) {
-                    $dataPhAir['labels'][] = $row['created_at'];
-                    $dataPhAir['datasets'][0]['data'][] = $row['ph_air'];
+            while ($row = $result->fetch_assoc()) {
+                $dataPhAir['labels'][] = $row['created_at'] = date("H:i:s");
+                $dataPhAir['datasets'][0]['data'][] = $row['ph_air'];
 
-                    $dataSuhuAir['labels'][] = $row['created_at'];
-                    $dataSuhuAir['datasets'][0]['data'][] = $row['suhu_air'];
+                $dataSuhuAir['labels'][] = $row['created_at'] = date("H:i:s");
+                $dataSuhuAir['datasets'][0]['data'][] = $row['suhu_air'];
 
-                    $dataKekeruhanAir['labels'][] = $row['created_at'];
-                    $dataKekeruhanAir['datasets'][0]['data'][] = $row['kekeruhan'];
+                $dataKekeruhanAir['labels'][] = $row['created_at'] = date("H:i:s");
+                $dataKekeruhanAir['datasets'][0]['data'][] = $row['kekeruhan'];
 
-                    $dataSuhuLingkungan['labels'][] = $row['created_at'];
-                    $dataSuhuLingkungan['datasets'][0]['data'][] = $row['suhu_lingkungan'];
+                $dataSuhuLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
+                $dataSuhuLingkungan['datasets'][0]['data'][] = $row['suhu_lingkungan'];
 
-                    $dataKelembabanLingkungan['labels'][] = $row['created_at'];
-                    $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembaban_lingkungan'];
-                }
+                $dataKelembabanLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
+                $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembaban_lingkungan'];
+            }
 
-                $stmt->close();
-                $mysqli->close();
-
-                ?>
-                <div class="container scrollarea">
-                    <div class="row">
-                        <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
-                            <a href="#" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                                <span class="fs-6 text-muted me-2">Dashboard </span>
-                                <span class="fs-4 text-muted"> - </span>
-                                <span class="ms-2 me-2 fs-6 text-muted"> Data Grafik</span>
-                                <span class="fs-4 text-muted"> - </span>
-                                <span class="ms-2 fs-6 fw-bold"> Grafik</span>
-                            </a>
-                        </div>
-                        <div class="col-md-12 pt-3 pb-3 border-bottom bg">
-                            <a href="#" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                                <span class="fs-6 text-muted me-2">Dashboard </span>
-                                <span class="fs-4 text-muted"> - </span>
-                                <span class="ms-2 me-2 fs-6 text-muted"> Data Grafik</span>
-                                <span class="fs-4 text-muted"> - </span>
-                                <span class="ms-2 fs-6 fw-bold"> Grafik</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 ms-3 mt-3">
-                            <div class="btn btn-info">
-                                <a class="text-decoration-none text-dark" href="datatables.php">
-                                    <i class="bi bi-box-arrow-left"></i> Kembali
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-6 justify-content-around">
-                        <div class="col-md-6">
-                            <div class="container pt-4">
-                                <section class="mb-4">
-                                    <div class="card">
-                                        <div class="card-header py-3 bg-danger">
-                                            <h5 class="mb-0 text-center"><strong class="text-white">Grafik PH Air</strong></h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas class="my-4 w-100" id="chartPhAir" height="380"></canvas>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="container pt-4">
-                                <section class="mb-4">
-                                    <div class="card">
-                                        <div class="card-header py-3 bg-success">
-                                            <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Air</strong></h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas class="my-4 w-100" id="chartSuhuAir" height="380"></canvas>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="container pt-4">
-                                <section class="mb-4">
-                                    <div class="card">
-                                        <div class="card-header py-3 bg-secondary">
-                                            <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kekeruhan</strong></h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas class="my-4 w-100" id="chartKekeruhanAir" height="380"></canvas>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6 justify-content-around">
-                            <div class="container pt-4">
-                                <section class="mb-4">
-                                    <div class="card">
-                                        <div class="card-header py-3 bg-primary">
-                                            <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Lingkungan</strong></h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas class="my-4 w-100" id="chartSuhuLingkungan" height="380"></canvas>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="container pt-4">
-                                <section class="mb-4">
-                                    <div class="card">
-                                        <div class="card-header py-3 bg-warning">
-                                            <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kelembaban</strong></h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas class="my-4 w-100" id="chartKelembabanLingkungan" height="380"></canvas>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
+            $stmt->close();
+            $mysqli->close();
+        ?>
+        
+        <div class="container scrollarea">
+            <div class="row">
+                <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
+                    <a href="#" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
+                        <span class="fs-6 text-muted me-2">Dashboard </span>
+                        <span class="fs-4 text-muted"> - </span>
+                        <span class="ms-2 me-2 fs-6 text-muted"> Data Grafik</span>
+                        <span class="fs-4 text-muted"> - </span>
+                        <span class="ms-2 fs-6 fw-bold"> Grafik</span>
+                    </a>
+                </div>
+                <div class="col-md-12 pt-3 pb-3 border-bottom bg">
+                    <a href="#" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
+                        <span class="fs-6 text-muted me-2">Dashboard </span>
+                        <span class="fs-4 text-muted"> - </span>
+                        <span class="ms-2 me-2 fs-6 text-muted"> Data Grafik</span>
+                        <span class="fs-4 text-muted"> - </span>
+                        <span class="ms-2 fs-6 fw-bold"> Grafik</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ms-3 mt-3">
+                    <div class="btn btn-info">
+                        <a class="text-decoration-none text-dark" href="datatables.php">
+                            <i class="bi bi-box-arrow-left"></i> Kembali
+                        </a>
                     </div>
                 </div>
-
-        
+            </div>
+            <div class="row mb-6 justify-content-around">
+                <div class="col-md-6">
+                    <div class="container pt-4">
+                        <section class="mb-4">
+                            <div class="card">
+                                <div class="card-header py-3 bg-danger">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik PH Air</strong></h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 w-100" id="chartPhAir" height="380"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="container pt-4">
+                        <section class="mb-4">
+                            <div class="card">
+                                <div class="card-header py-3 bg-success">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Air</strong></h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 w-100" id="chartSuhuAir" height="380"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="container pt-4">
+                        <section class="mb-4">
+                            <div class="card">
+                                <div class="card-header py-3 bg-secondary">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kekeruhan</strong></h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 w-100" id="chartKekeruhanAir" height="380"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-6 justify-content-around">
+                    <div class="container pt-4">
+                        <section class="mb-4">
+                            <div class="card">
+                                <div class="card-header py-3 bg-primary">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Lingkungan</strong></h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 w-100" id="chartSuhuLingkungan" height="380"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="container pt-4">
+                        <section class="mb-4">
+                            <div class="card">
+                                <div class="card-header py-3 bg-warning">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kelembaban</strong></h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 w-100" id="chartKelembabanLingkungan" height="380"></canvas>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -342,7 +341,6 @@ if (!isset($_SESSION["login"])) {
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/sidebars.js"></script>
-    <script src="public/js/script.js"></script>
 </body>
 
 </html>
