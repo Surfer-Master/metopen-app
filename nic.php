@@ -7,8 +7,6 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit();
 }
-
-require 'conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +68,7 @@ require 'conn.php';
     </div>
 
     <?php
+    require 'conn.php';
     $query = "SELECT * FROM nic";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
@@ -99,7 +98,6 @@ require 'conn.php';
 
     ?>
     <div class="main-content">
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg">
@@ -150,8 +148,8 @@ require 'conn.php';
             },
             plugins: {
                 zoom: {
-                    pan:{
-                        enabled:true
+                    pan: {
+                        enabled: true
                     },
                     zoom: {
                         wheel: {
