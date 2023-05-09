@@ -24,6 +24,8 @@ require 'conn.php';
     <link rel="shortcut icon" href="public/image/untan.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js" integrity="sha512-wUYbRPLV5zs6IqvWd88HIqZU/b8TBx+I8LEioQ/UC0t5EMCLApqhIAnUg7EsAzdbhhdgW07TqYDdH3QEXRcPOQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -146,6 +148,19 @@ require 'conn.php';
                     // beginAtZero: true,
                 },
             },
+            plugins: {
+                zoom: {
+                    pan:{
+                        enabled:true
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'xy',
+                    }
+                }
+            }
         };
 
         let dataDelay = <?= json_encode($dataDelay) ?>;
@@ -159,7 +174,6 @@ require 'conn.php';
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/sidebars.js"></script>
-    <script src="public/js/script.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Apr 2023 pada 08.29
+-- Waktu pembuatan: 06 Bulan Mei 2023 pada 07.50
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(3) NOT NULL,
-  `username` varchar(25) DEFAULT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `username` varchar(30) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -39,8 +40,8 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$m1Y2AdW5ecGjJ90ohfvVfu5Dwn5xpa/fmDzYg3VGTABr60IM.fwR2', '2023-04-28 07:22:09', '2023-04-28 12:35:06');
+INSERT INTO `admin` (`id`, `name`, `username`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin', '$2y$10$Idel4ygXxk.4DXC9R8WLcu1rMBLWQLQVnP4qtLMwDSrOliEAED0Sm', '2023-04-28 07:22:09', '2023-05-06 05:37:26');
 
 -- --------------------------------------------------------
 
@@ -51,10 +52,12 @@ INSERT INTO `admin` (`id`, `username`, `password`, `created_at`, `updated_at`) V
 CREATE TABLE `data` (
   `id` int(7) NOT NULL,
   `ph_air` float(4,2) DEFAULT NULL,
-  `suhu_air` float(4,2) DEFAULT NULL,
-  `kekeruhan` float(4,2) DEFAULT NULL,
+  `suhu_air` float(5,2) DEFAULT NULL,
+  `kekeruhan` float(5,2) DEFAULT NULL,
   `suhu_lingkungan` float(4,2) DEFAULT NULL,
-  `kelembaban_lingkungan` float(4,2) DEFAULT NULL,
+  `kelembaban_lingkungan` float(5,2) DEFAULT NULL,
+  `asal_air` varchar(30) DEFAULT NULL,
+  `status` varchar(30) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -67,7 +70,7 @@ CREATE TABLE `data` (
 
 CREATE TABLE `nic` (
   `id` int(7) NOT NULL,
-  `delay_time` float(10,2) DEFAULT NULL,
+  `delay_time` int(7) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,7 +110,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `nic`
