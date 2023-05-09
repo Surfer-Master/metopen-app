@@ -35,46 +35,49 @@ $datas = new DataView();
 </head>
 
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
-            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link link-body-emphasis">
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="datatables.php" class="nav-link active">
-                        Data Grafik
-                    </a>
-                </li>
-                <li>
-                    <a href="nic.php" class="nav-link link-body-emphasis">
-                        NIC
-                    </a>
-                </li>
 
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle fs-3 me-2"></i>
 
-                    <strong>Admin</strong>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
+        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link link-body-emphasis">
+                    Dashboard
                 </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li>
-                        <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Log out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            </li>
+            <li>
+                <a href="datatables.php" class="nav-link active">
+                    Data Grafik
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link link-body-emphasis">
+                    NIC
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-3 me-2"></i>
+
+                <strong>Admin</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li>
+                    <form action="logout.php" method="POST">
+                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
+    </div>
+
+    <div class="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg">
@@ -123,14 +126,14 @@ $datas = new DataView();
                                 <tbody>
                                     <?php $datas->show() ?>
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/sidebars.js"></script>

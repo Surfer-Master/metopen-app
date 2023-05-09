@@ -27,142 +27,142 @@ if (!isset($_SESSION["login"])) {
 </head>
 
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
-            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link link-body-emphasis">
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="datatables.php"  class="nav-link active">
-                        Data Grafik
-                    </a>
-                </li>
-                <li>
-                    <a href="nic.php" class="nav-link link-body-emphasis">
-                        NIC
-                    </a>
-                </li>
-                
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <i class="bi bi-person-circle fs-3 me-2"></i>
-
-                    <strong>Admin</strong>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
+        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link link-body-emphasis">
+                    Dashboard
                 </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li>
-                        <form action="logout.php" method="POST">
-                            <button type="submit" class="dropdown-item" name="logout">Log out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            </li>
+            <li>
+                <a href="datatables.php" class="nav-link active">
+                    Data Grafik
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link link-body-emphasis">
+                    NIC
+                </a>
+            </li>
+
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+                <i class="bi bi-person-circle fs-3 me-2"></i>
+
+                <strong>Admin</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li>
+                    <form action="logout.php" method="POST">
+                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
-        <?php
-            require 'conn.php';
-            $query = "SELECT * FROM data";
-            $stmt = $mysqli->prepare($query);
-            $stmt->execute();
-            $result = $stmt->get_result();
+    </div>
+    <?php
+    require 'conn.php';
+    $query = "SELECT * FROM data";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-            $dataPhAir = array(
-                'labels' => array(),
-                'datasets' => array(
-                    array(
-                        'label' => "PH Air",
-                        'data' => array(),
-                        'fill' => false,
-                        'borderColor' => "red",
-                        'borderWidth' => 2,
-                        'tension' => 0.1
-                    )
-                )
-            );
-            
-            $dataSuhuAir = array(
-                'labels' => array(),
-                'datasets' => array(
-                    array(
-                        'label' => "Suhu Air",
-                        'data' => array(),
-                        'fill' => false,
-                        'borderColor' => "darkgreen",
-                        'borderWidth' => 2,
-                        'tension' => 0.1
-                    )
-                )
-            );
-            $dataKekeruhanAir = array(
-                'labels' => array(),
-                'datasets' => array(
-                    array(
-                        'label' => "Kekeruhan Air",
-                        'data' => array(),
-                        'fill' => false,
-                        'borderColor' => "grey",
-                        'borderWidth' => 2,
-                        'tension' => 0.1
-                    )
-                )
-            );
-            $dataSuhuLingkungan = array(
-                'labels' => array(),
-                'datasets' => array(
-                    array(
-                        'label' => "Suhu Lingkungan",
-                        'data' => array(),
-                        'fill' => false,
-                        'borderColor' => "blue",
-                        'borderWidth' => 2,
-                        'tension' => 0.1
-                    )
-                )
-            );
-            $dataKelembabanLingkungan = array(
-                'labels' => array(),
-                'datasets' => array(
-                    array(
-                        'label' => "Kelembaban Lingkungan",
-                        'data' => array(),
-                        'fill' => false,
-                        'borderColor' => "yellow",
-                        'borderWidth' => 2,
-                        'tension' => 0.1
-                    )
-                )
-            );
+    $dataPhAir = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "PH Air",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "red",
+                'borderWidth' => 2,
+                'tension' => 0.1
+            )
+        )
+    );
 
-            while ($row = $result->fetch_assoc()) {
-                $dataPhAir['labels'][] = $row['created_at'] = date("H:i:s");
-                $dataPhAir['datasets'][0]['data'][] = $row['ph_air'];
+    $dataSuhuAir = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "Suhu Air",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "darkgreen",
+                'borderWidth' => 2,
+                'tension' => 0.1
+            )
+        )
+    );
+    $dataKekeruhanAir = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "Kekeruhan Air",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "grey",
+                'borderWidth' => 2,
+                'tension' => 0.1
+            )
+        )
+    );
+    $dataSuhuLingkungan = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "Suhu Lingkungan",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "blue",
+                'borderWidth' => 2,
+                'tension' => 0.1
+            )
+        )
+    );
+    $dataKelembabanLingkungan = array(
+        'labels' => array(),
+        'datasets' => array(
+            array(
+                'label' => "Kelembaban Lingkungan",
+                'data' => array(),
+                'fill' => false,
+                'borderColor' => "yellow",
+                'borderWidth' => 2,
+                'tension' => 0.1
+            )
+        )
+    );
 
-                $dataSuhuAir['labels'][] = $row['created_at'] = date("H:i:s");
-                $dataSuhuAir['datasets'][0]['data'][] = $row['suhu_air'];
+    while ($row = $result->fetch_assoc()) {
+        $dataPhAir['labels'][] = $row['created_at'] = date("H:i:s");
+        $dataPhAir['datasets'][0]['data'][] = $row['ph_air'];
 
-                $dataKekeruhanAir['labels'][] = $row['created_at'] = date("H:i:s");
-                $dataKekeruhanAir['datasets'][0]['data'][] = $row['kekeruhan'];
+        $dataSuhuAir['labels'][] = $row['created_at'] = date("H:i:s");
+        $dataSuhuAir['datasets'][0]['data'][] = $row['suhu_air'];
 
-                $dataSuhuLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
-                $dataSuhuLingkungan['datasets'][0]['data'][] = $row['suhu_lingkungan'];
+        $dataKekeruhanAir['labels'][] = $row['created_at'] = date("H:i:s");
+        $dataKekeruhanAir['datasets'][0]['data'][] = $row['kekeruhan'];
 
-                $dataKelembabanLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
-                $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembaban_lingkungan'];
-            }
+        $dataSuhuLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
+        $dataSuhuLingkungan['datasets'][0]['data'][] = $row['suhu_lingkungan'];
 
-            $stmt->close();
-            $mysqli->close();
-        ?>
-        
+        $dataKelembabanLingkungan['labels'][] = $row['created_at'] = date("H:i:s");
+        $dataKelembabanLingkungan['datasets'][0]['data'][] = $row['kelembaban_lingkungan'];
+    }
+
+    $stmt->close();
+    $mysqli->close();
+    ?>
+
+    <div class="main-content">
         <div class="container scrollarea">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
@@ -266,7 +266,7 @@ if (!isset($_SESSION["login"])) {
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
         let options = {
@@ -285,8 +285,8 @@ if (!isset($_SESSION["login"])) {
             },
             plugins: {
                 zoom: {
-                    pan:{
-                        enabled:true
+                    pan: {
+                        enabled: true
                     },
                     zoom: {
                         wheel: {
