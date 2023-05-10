@@ -42,7 +42,7 @@ if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
 
         $query  = "INSERT INTO data (ph_air, suhu_air, kekeruhan, suhu_lingkungan, kelembaban_lingkungan, asal_air_id, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($query);
-        $stmt->bind_param("dddddss", $ph_air, $suhu_air, $kekeruhan, $suhu_lingkungan, $kelembaban_lingkungan, $asal_air_id, $status);
+        $stmt->bind_param("dddddis", $ph_air, $suhu_air, $kekeruhan, $suhu_lingkungan, $kelembaban_lingkungan, $asal_air_id, $status);
         $stmt->execute();
 
         http_response_code(201);
