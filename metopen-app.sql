@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Bulan Mei 2023 pada 07.50
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.6
+-- Waktu pembuatan: 10 Bulan Mei 2023 pada 12.36
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,6 +46,27 @@ INSERT INTO `admin` (`id`, `name`, `username`, `password`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `asal_air`
+--
+
+CREATE TABLE `asal_air` (
+  `id` int(3) NOT NULL,
+  `nama` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `asal_air`
+--
+
+INSERT INTO `asal_air` (`id`, `nama`) VALUES
+(1, 'Bukit Kelam'),
+(2, 'PDAM Kubu Raya'),
+(3, 'Kota Bandung'),
+(4, 'Tanray');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `data`
 --
 
@@ -56,7 +77,7 @@ CREATE TABLE `data` (
   `kekeruhan` float(5,2) DEFAULT NULL,
   `suhu_lingkungan` float(4,2) DEFAULT NULL,
   `kelembaban_lingkungan` float(5,2) DEFAULT NULL,
-  `asal_air` varchar(30) DEFAULT NULL,
+  `asal_air_id` int(2) DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -71,6 +92,7 @@ CREATE TABLE `data` (
 CREATE TABLE `nic` (
   `id` int(7) NOT NULL,
   `delay_time` int(7) DEFAULT NULL,
+  `asal_air_id` int(2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -85,16 +107,24 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `asal_air`
+--
+ALTER TABLE `asal_air`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `data`
 --
 ALTER TABLE `data`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_asal_air` (`asal_air_id`);
 
 --
 -- Indeks untuk tabel `nic`
 --
 ALTER TABLE `nic`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_asal_air_nic` (`asal_air_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -107,16 +137,38 @@ ALTER TABLE `admin`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `asal_air`
+--
+ALTER TABLE `asal_air`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `nic`
 --
 ALTER TABLE `nic`
   MODIFY `id` int(7) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `data`
+--
+ALTER TABLE `data`
+  ADD CONSTRAINT `FK_asal_air` FOREIGN KEY (`asal_air_id`) REFERENCES `asal_air` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `nic`
+--
+ALTER TABLE `nic`
+  ADD CONSTRAINT `FK_asal_air_nic` FOREIGN KEY (`asal_air_id`) REFERENCES `asal_air` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
