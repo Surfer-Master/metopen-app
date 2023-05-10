@@ -9,10 +9,15 @@ if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
 } else if (isset($data["delay_time"])) {
     try {
         $delay_time = $data['delay_time'];
+        $asal_air_id = 1; // Bukit Kelam
+        // $asal_air_id = 2; // PDAM Kubu Raya
+        // $asal_air_id = 3; //Kota Bandung
+        // $asal_air_id = 4; // Tanray
 
-        $query  = "INSERT INTO nic (delay_time) VALUES (?)";
+        $query  = "INSERT INTO nic (delay_time, asal_air_id) VALUES (?,?)";
         $stmt = $mysqli->prepare($query);
-        $stmt->bind_param("i", $delay_time);
+
+        $stmt->bind_param("di", $delay_time, $asal_air_id);
         $stmt->execute();
 
         http_response_code(201);
