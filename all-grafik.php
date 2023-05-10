@@ -24,6 +24,8 @@ require 'conn.php';
     <link rel="shortcut icon" href="public/image/untan.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js" integrity="sha512-wUYbRPLV5zs6IqvWd88HIqZU/b8TBx+I8LEioQ/UC0t5EMCLApqhIAnUg7EsAzdbhhdgW07TqYDdH3QEXRcPOQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -429,11 +431,11 @@ require 'conn.php';
                     <div class="container pt-4">
                         <section class="mb-4">
                             <div class="card">
-                                <div class="card-header py-3 bg-danger">
-                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik PH Air</strong></h5>
+                                <div class="card-header py-3 bg-secondary">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kekeruhan</strong></h5>
                                 </div>
                                 <div class="card-body">
-                                    <canvas class="my-4 w-100" id="chartPhAir" height="380"></canvas>
+                                    <canvas class="my-4 w-100" id="chartKekeruhanAir" height="380"></canvas>
                                 </div>
                             </div>
                         </section>
@@ -457,11 +459,11 @@ require 'conn.php';
                     <div class="container pt-4">
                         <section class="mb-4">
                             <div class="card">
-                                <div class="card-header py-3 bg-secondary">
-                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kekeruhan</strong></h5>
+                                <div class="card-header py-3 bg-danger">
+                                    <h5 class="mb-0 text-center"><strong class="text-white">Grafik PH Air</strong></h5>
                                 </div>
                                 <div class="card-body">
-                                    <canvas class="my-4 w-100" id="chartKekeruhanAir" height="380"></canvas>
+                                    <canvas class="my-4 w-100" id="chartPhAir" height="380"></canvas>
                                 </div>
                             </div>
                         </section>
