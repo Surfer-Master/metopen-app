@@ -7,6 +7,7 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit();
 }
+
 require 'conn.php';
 ?>
 
@@ -21,30 +22,50 @@ require 'conn.php';
     <link rel="stylesheet" href="public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public/css/sidebars.css" />
     <link rel="shortcut icon" href="public/image/untan.png" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary">
-        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-1 p-md-3 bg-body-secondary">
+        <a href="" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold text-text-center">
+                <img src="public/image/untan.png" width="30px" class="mx-1 me-md-2">
+                <span class="text-dashboard-item">Metopen App</span>
+            </span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="index.php" class="nav-link active">
+                <a href="index.php" class="nav-link active text-dashboard-item">
                     Dashboard
                 </a>
-            </li>
-            <li>
-                <a href="datatables.php" class="nav-link link-body-emphasis">
-                    Data Grafik
+                <a href="index.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard">
+                    <i class="bi bi-speedometer fs-5"></i>
                 </a>
             </li>
             <li>
-                <a href="nic.php" class="nav-link link-body-emphasis">
+                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
+                    Data Grafik
+                </a>
+                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                    <i class="bi bi-table fs-5"></i>
+                </a>
+            </li>
+            <li>
+                <a href="all-grafik.php" class="nav-link link-body-emphasis text-dashboard-item">
+                    Semua Grafik
+                </a>
+                <a href="all-grafik.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Semua Grafik">
+                    <i class="bi bi-graph-up fs-5"></i>
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link link-body-emphasis text-dashboard-item">
                     NIC
+                </a>
+                <a href="nic.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="NIC">
+                    <i class="bi bi-ui-checks-grid fs-5"></i>
                 </a>
             </li>
         </ul>
@@ -54,12 +75,16 @@ require 'conn.php';
 
                 <i class="bi bi-person-circle fs-3 me-2"></i>
 
-                <strong><?= $_SESSION['admin-name'] ?></strong>
+                <strong class="text-dashboard-item"><?= $_SESSION['admin-name'] ?></strong>
             </a>
             <ul class="dropdown-menu text-small shadow">
                 <li>
                     <form action="logout.php" method="POST">
-                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                        <button type="submit" class="dropdown-item " name="logout">
+                            <span>
+                                Log Out <i class="bi bi-box-arrow-right fs-5"></i>
+                            </span>
+                        </button>
                     </form>
                 </li>
             </ul>
@@ -70,11 +95,11 @@ require 'conn.php';
             <div class="row">
                 <div class="col-md-12 border-bottom bgi">
                     <a href="" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                        <span class="fs-6 text-muted me-2">Dashboard </span>
+                        <span class="fs-6 text-muted me-2 fw-bold">Dashboard </span>
                     </a>
                 </div>
             </div>
-            <div class="row mt-4 ms-4 me-4">
+            <div class="row mt-2 ms-1 me-1 mt-lg-4 ms-lg-4 me-lg-4 ">
                 <div class="col-md-12">
                     <div class="card bg-warning rounded-0 mb-4 rounded-3">
                         <div class="card-body pt-0 mt-3">
@@ -87,7 +112,7 @@ require 'conn.php';
             <div class="row m-4 mt-0">
                 <div class="col-md-12">
                     <div class="row mb-1">
-                        <div class="col-sm-3">
+                        <div class="col-md-3">
                             <div class="card bg-primary hoverable card-xl-stretch mb-5 mb-xl-8 rounded-1">
                                 <div class="shadow">
                                     <div class="card-body">
@@ -106,7 +131,7 @@ require 'conn.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-3">
                             <div class="card bg-danger hoverable card-xl-stretch mb-5 mb-xl-8 rounded-1">
                                 <div class="shadow">
                                     <div class="card-body">
@@ -125,7 +150,7 @@ require 'conn.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-3">
                             <div class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8 rounded-1">
                                 <div class="shadow">
                                     <div class="card-body">
@@ -144,7 +169,7 @@ require 'conn.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-3">
                             <div class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8 rounded-1">
                                 <div class="shadow">
                                     <div class="card-body">

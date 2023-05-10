@@ -9,8 +9,8 @@ class DataView extends DataController
         if ($datas != null) {
             foreach ($datas as $data) { ?>
                 <tr>
-                    <td><?php echo $no ?></td>
-                    <td><?php echo $data['created_at'] = date("H:i:s") ?></td>
+                    <td><?php echo $no++ ?></td>
+                    <td><?php echo $data['created_at']/* = date("H:i:s") */?></td>
                     <td><?php echo $data['ph_air'] ?></td>
                     <td><?php echo $data['suhu_air'] ?></td>
                     <td><?php echo $data['kekeruhan'] ?></td>

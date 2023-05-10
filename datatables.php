@@ -35,42 +35,62 @@ $datas = new DataView();
 </head>
 
 <body>
-
-
-    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-secondary" style="width: 280px;">
-        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4 fw-bold"><img src="public/image/untan.png" width="30px" class="me-2">Metopen App</span>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-1 p-md-3 bg-body-secondary">
+        <a href="" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 fw-bold text-text-center">
+                <img src="public/image/untan.png" width="30px" class="mx-1 me-md-2">
+                <span class="text-dashboard-item">Metopen App</span>
+            </span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="index.php" class="nav-link link-body-emphasis">
+            <li>
+                <a href="index.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Dashboard
                 </a>
+                <a href="index.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard">
+                    <i class="bi bi-speedometer fs-5"></i>
+                </a>
             </li>
-            <li>
-                <a href="datatables.php" class="nav-link active">
+            <li class="nav-item">
+                <a href="datatables.php" class="nav-link active text-dashboard-item">
                     Data Grafik
                 </a>
-            </li>
-            <li>
-                <a href="nic.php" class="nav-link link-body-emphasis">
-                    NIC
+                <a href="datatables.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                    <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
-
+            <li>
+                <a href="all-grafik.php" class="nav-link link-body-emphasis text-dashboard-item">
+                    Semua Grafik
+                </a>
+                <a href="all-grafik.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Semua Grafik">
+                    <i class="bi bi-graph-up fs-5"></i>
+                </a>
+            </li>
+            <li>
+                <a href="nic.php" class="nav-link link-body-emphasis text-dashboard-item">
+                    NIC
+                </a>
+                <a href="nic.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="NIC">
+                    <i class="bi bi-ui-checks-grid fs-5"></i>
+                </a>
+            </li>
         </ul>
         <hr>
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person-circle fs-3 me-2"></i>
 
-                <strong>Admin</strong>
+                <strong class="text-dashboard-item"><?= $_SESSION['admin-name'] ?></strong>
             </a>
             <ul class="dropdown-menu text-small shadow">
                 <li>
                     <form action="logout.php" method="POST">
-                        <button type="submit" class="dropdown-item" name="logout">Log out</button>
+                        <button type="submit" class="dropdown-item" name="logout">
+                            <span>
+                                Log Out <i class="bi bi-box-arrow-right fs-5"></i>
+                            </span></button>
                     </form>
                 </li>
             </ul>
@@ -107,8 +127,8 @@ $datas = new DataView();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <table class="table table-striped" id="data_grafik_table">
+                        <div class="col-md-12 table-responsive text-center">
+                            <table class="table table-striped align-middle" id="data_grafik_table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
