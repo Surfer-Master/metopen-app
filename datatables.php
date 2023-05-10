@@ -114,13 +114,13 @@ $datas = new DataView();
                                         <th>No</th>
                                         <th>Waktu</th>
                                         <th>PH Air</th>
-                                        <th>Suhu Air</th>
-                                        <th>Kekeruhan</th>
-                                        <th>Lingkungan</th>
-                                        <th>Kelembaban</th>
+                                        <th>Suhu Air (°C)</th>
+                                        <th>Kekeruhan (NTU)</th>
+                                        <th>Suhu Lingkungan (°C)</th>
+                                        <th>Kelembaban (%)</th>
                                         <th>Asal Air</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>Grafik</th>
                                     </tr>
                                 </thead>
                                 <tbody>
