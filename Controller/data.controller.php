@@ -6,6 +6,11 @@ class DataController extends DataModel
     {
         return $this->findAll();
     }
+
+    public function get_Data_Index()
+    {
+        return $this->findAllIndex();
+    }
 }
 
 ?>

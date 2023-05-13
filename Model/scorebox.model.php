@@ -22,17 +22,4 @@ class DataModel extends Connection
             return $datas;
         }
     }
-
-    protected function findAllIndex()
-    {
-        $sql = "SELECT DISTINCT asal_air_id, status FROM data";
-        $result = $this->connect()->query($sql);
-        if($result->num_rows > 0) {
-            while ($data = mysqli_fetch_assoc($result)) {
-                $datas[] = $data;
-            }
-            return $datas;
-        }
-    }
 }
-

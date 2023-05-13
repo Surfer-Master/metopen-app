@@ -27,5 +27,33 @@ class DataView extends DataController
             }
         }
     }
+
+    public function showIndex()
+    {
+        $datas = $this->get_Data_Index();
+        $no = 1;
+        if ($datas != null) {
+            foreach ($datas as $data) { ?>
+                <tr>
+                    <td class="text-start"><?php echo $no++ ?></td>
+                    <td class="text-start"><?php echo $data['asal_air_id'] ?></td>
+                    <td class="text-start">
+                        <span class="bg-success fw-bold text-white p-1 border-0 border-bottom rounded-2 ps-2 pe-2">
+                            <?php echo $data['status'] ?>
+                        </span>
+                    </td>
+                    <td class="text-start"><?php echo "
+                    <button class='btn btn-outline-info text-center active border-0 border-bottom rounded-2'>
+                        <a class='text-decoration-none fw-bold text-white p-1 ps-2 pe-2' href='grafik.php?asal_air=" . $data['asal_air_id'] . "'>
+                            <i class='bi bi-journal-text me-2'></i>Detail
+                        </a>
+                    </button>
+                        "; ?>
+                    </td>
+                </tr>
+<?php
+            }
+        }
+    }
 }
 ?>
