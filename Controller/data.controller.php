@@ -11,6 +11,16 @@ class DataController extends DataModel
     {
         return $this->findAllIndex();
     }
+
+    public function get_layak_diminum()
+    {
+        return $this->scoreBoxLayakMinum();
+    }
+
+    public function get_Tidak_layak_diminum()
+    {
+        return $this->scoreBoxTidakLayakMinum();
+    }
 }
 
 ?>

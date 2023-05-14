@@ -341,68 +341,68 @@ require 'conn.php';
     );
 
     while ($row1 = $result1->fetch_assoc()) {
-        // $dataPhAir['labels'][] = $row['created_at'] = date("H:i:s");
-        $dataPhAir['labels'][] = $row1['created_at'];
+        // $dataPhAir['labels'][] ='' = date("H:i:s");
+        $dataPhAir['labels'][] = '';
         $dataPhAir['datasets'][0]['data'][] = $row1['ph_air'];
 
-        $dataSuhuAir['labels'][] = $row1['created_at'];
+        $dataSuhuAir['labels'][] = '';
         $dataSuhuAir['datasets'][0]['data'][] = $row1['suhu_air'];
 
-        $dataKekeruhanAir['labels'][] = $row1['created_at'];
+        $dataKekeruhanAir['labels'][] = '';
         $dataKekeruhanAir['datasets'][0]['data'][] = $row1['kekeruhan'];
 
-        $dataSuhuLingkungan['labels'][] = $row1['created_at'];
+        $dataSuhuLingkungan['labels'][] = '';
         $dataSuhuLingkungan['datasets'][0]['data'][] = $row1['suhu_lingkungan'];
 
-        $dataKelembabanLingkungan['labels'][] = $row1['created_at'];
+        $dataKelembabanLingkungan['labels'][] = '';
         $dataKelembabanLingkungan['datasets'][0]['data'][] = $row1['kelembaban_lingkungan'];
     }
     while ($row2 = $result2->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row2['created_at'];
+        $dataPhAir['labels'][] = '';
         $dataPhAir['datasets'][1]['data'][] = $row2['ph_air'];
 
-        $dataSuhuAir['labels'][] = $row2['created_at'];
+        $dataSuhuAir['labels'][] = '';
         $dataSuhuAir['datasets'][1]['data'][] = $row2['suhu_air'];
 
-        $dataKekeruhanAir['labels'][] = $row2['created_at'];
+        $dataKekeruhanAir['labels'][] = '';
         $dataKekeruhanAir['datasets'][1]['data'][] = $row2['kekeruhan'];
 
-        $dataSuhuLingkungan['labels'][] = $row2['created_at'];
+        $dataSuhuLingkungan['labels'][] = '';
         $dataSuhuLingkungan['datasets'][1]['data'][] = $row2['suhu_lingkungan'];
 
-        $dataKelembabanLingkungan['labels'][] = $row2['created_at'];
+        $dataKelembabanLingkungan['labels'][] = '';
         $dataKelembabanLingkungan['datasets'][1]['data'][] = $row2['kelembaban_lingkungan'];
     }
     while ($row3 = $result3->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row3['created_at'];
+        $dataPhAir['labels'][] = '';
         $dataPhAir['datasets'][2]['data'][] = $row3['ph_air'];
 
-        $dataSuhuAir['labels'][] = $row3['created_at'];
+        $dataSuhuAir['labels'][] = '';
         $dataSuhuAir['datasets'][2]['data'][] = $row3['suhu_air'];
 
-        $dataKekeruhanAir['labels'][] = $row3['created_at'];
+        $dataKekeruhanAir['labels'][] = '';
         $dataKekeruhanAir['datasets'][2]['data'][] = $row3['kekeruhan'];
 
-        $dataSuhuLingkungan['labels'][] = $row3['created_at'];
+        $dataSuhuLingkungan['labels'][] = '';
         $dataSuhuLingkungan['datasets'][2]['data'][] = $row3['suhu_lingkungan'];
 
-        $dataKelembabanLingkungan['labels'][] = $row3['created_at'];
+        $dataKelembabanLingkungan['labels'][] = '';
         $dataKelembabanLingkungan['datasets'][2]['data'][] = $row3['kelembaban_lingkungan'];
     }
     while ($row4 = $result4->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row4['created_at'];
+        $dataPhAir['labels'][] = '';
         $dataPhAir['datasets'][3]['data'][] = $row4['ph_air'];
 
-        $dataSuhuAir['labels'][] = $row4['created_at'];
+        $dataSuhuAir['labels'][] = '';
         $dataSuhuAir['datasets'][3]['data'][] = $row4['suhu_air'];
 
-        $dataKekeruhanAir['labels'][] = $row4['created_at'];
+        $dataKekeruhanAir['labels'][] = '';
         $dataKekeruhanAir['datasets'][3]['data'][] = $row4['kekeruhan'];
 
-        $dataSuhuLingkungan['labels'][] = $row4['created_at'];
+        $dataSuhuLingkungan['labels'][] = '';
         $dataSuhuLingkungan['datasets'][3]['data'][] = $row4['suhu_lingkungan'];
 
-        $dataKelembabanLingkungan['labels'][] = $row4['created_at'];
+        $dataKelembabanLingkungan['labels'][] = '';
         $dataKelembabanLingkungan['datasets'][3]['data'][] = $row4['kelembaban_lingkungan'];
     }
 

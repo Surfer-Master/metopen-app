@@ -51,6 +51,11 @@ if (isset($_SESSION["login"])) {
     <div class="shape"></div>
     <div class="shape"></div>
   </div>
+
+  <div class="background2">
+    <div class="shape2"></div>
+    <div class="shape2"></div>
+  </div>
   <div class="container-fluid mt-5 ">
     <div class="row">
       <div class="col-md-12">

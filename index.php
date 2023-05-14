@@ -27,7 +27,7 @@ $datas = new DataView();
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    <div class="d-flex border-dark bg-primary shadow-sm fixed-top">
+    <div class="d-flex border-dark bg-primary fixed-top">
         <div class="p-2 ms-5 flex-grow-1">
             <button class="btn btn-outline-dark text-center active">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-check" viewBox="0 0 16 16">
@@ -64,10 +64,9 @@ $datas = new DataView();
                         <table class="table table-striped align-middle" id="data_grafik_table">
                             <thead>
                                 <tr>
-                                    <th>Nomor</th>
+                                    <th>No</th>
                                     <th>Asal Air</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
