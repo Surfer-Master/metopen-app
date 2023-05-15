@@ -3,7 +3,7 @@ session_start();
 require 'conn.php';
 
 if (isset($_SESSION["login"])) {
-	header("Location: index.php");
+	header("Location: dashboard.php");
 	exit();
 } elseif (isset($_POST['login'])) {
 
@@ -34,7 +34,7 @@ if (isset($_SESSION["login"])) {
 				$_SESSION['admin-name'] = $row['name'];
 				$_SESSION['admin-username'] = $row['username'];
 
-				header("location: index.php");
+				header("location: dashboard.php");
 				exit();
 			}
 		} else {
@@ -47,6 +47,6 @@ if (isset($_SESSION["login"])) {
 	$stmt->close();
 	$mysqli->close();
 } else {
-	header("Location: login.php");
+	header("Location: index.php");
 	exit();
 }

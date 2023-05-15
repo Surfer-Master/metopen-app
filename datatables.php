@@ -109,24 +109,6 @@ $datas = new DataView();
             <div class="row m-2 mt-5">
                 <div class="col-md-12 shadow-lg border border-0 rounded-4">
                     <div class="container p-3">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6 mt-2">
-                                            <select class="form-select form-select-sm bulan_harian">
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6 mt-2">
-                                            <select class="form-select form-select-sm tahun_harian" id="years_pie_letter">
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12 table-responsive text-center">
                             <table class="table table-striped align-middle" id="data_grafik_table">
                                 <thead>

@@ -27,5 +27,49 @@ class DataView extends DataController
             }
         }
     }
+
+    public function showIndex()
+    {
+        $datas = $this->get_Data_Index();
+        $no = 1;
+        if ($datas != null) {
+            foreach ($datas as $data) { ?>
+                <tr>
+                    <td class="text-start"><?php echo $no++ ?></td>
+                    <td class="text-start"><?php echo $data['asal'] ?></td>
+                    <td class="text-start">
+                        <span class="bg-success fw-bold text-white p-1 border-0 border-bottom rounded-2 ps-2 pe-2">
+                            <?php echo $data['status'] ?>
+                        </span>
+                    </td>
+                </tr>
+<?php
+            }
+        }
+    }
+
+    public function layakMinum()
+    {
+        $datas = $this->get_layak_diminum();
+        $no = 1;
+        if ($datas != null) {
+            foreach ($datas as $data) { ?>
+                <span><?php echo $data['layak_diminum']?></span>
+<?php
+            }
+        }
+    }
+
+    public function tidakLayakMinum()
+    {
+        $datas = $this->get_tidak_layak_diminum();
+        $no = 1;
+        if ($datas != null) {
+            foreach ($datas as $data) { ?>
+                <span><?php echo $data['tidak_layak_diminum']?></span>
+<?php
+            }
+        }
+    }
 }
 ?>
