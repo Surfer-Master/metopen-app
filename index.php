@@ -63,11 +63,16 @@ $datas = new DataView();
                     <div class="col-md-12 table-responsive text-center">
                         <table class="table table-striped align-middle" id="data_grafik_table">
                             <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Asal Air</th>
-                                    <th>Keterangan</th>
-                                </tr>
+                            <tr>
+                                <th>Waktu</th>
+                                <th>PH Air</th>
+                                <th>Suhu Air (°C)</th>
+                                <th>Kekeruhan (NTU)</th>
+                                <th>Suhu Lingkungan (°C)</th>
+                                <th>Kelembaban (%)</th>
+                                <th>Asal Air</th>
+                                <th>Keterangan</th>
+                            </tr>
                             </thead>
                             <tbody>
                                 <?php $datas->showIndex() ?>
