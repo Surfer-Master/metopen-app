@@ -34,13 +34,13 @@ class DataView extends DataController
         if ($datas != null) {
             foreach ($datas as $data) { ?>
                 <tr>
+                    <td class="text-start"><?php echo $data['asal'] ?></td>
                     <td class="text-start"><?php echo $data['created_at']/* = date("H:i:s") */ ?></td>
                     <td class="text-start"><?php echo $data['ph_air'] ?></td>
                     <td class="text-start"><?php echo $data['suhu_air'] ?></td>
                     <td class="text-start"><?php echo $data['kekeruhan'] ?></td>
                     <td class="text-start"><?php echo $data['suhu_lingkungan'] ?></td>
                     <td class="text-start"><?php echo $data['kelembaban_lingkungan'] ?></td>
-                    <td class="text-start"><?php echo $data['asal'] ?></td>
                     <td class="text-start">
                         <span class="bg-success fw-bold text-white p-1 border-0 border-bottom rounded-2 ps-2 pe-2">
                             <?php echo $data['status'] ?>

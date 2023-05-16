@@ -64,13 +64,13 @@ $datas = new DataView();
                         <table class="table table-striped align-middle" id="data_grafik_table">
                             <thead>
                             <tr>
-                                <th>Waktu</th>
+                                <th>Asal Air</th>
+                                <th>Waktu Pengambilan Data</th>
                                 <th>PH Air</th>
                                 <th>Suhu Air (°C)</th>
                                 <th>Kekeruhan (NTU)</th>
                                 <th>Suhu Lingkungan (°C)</th>
                                 <th>Kelembaban (%)</th>
-                                <th>Asal Air</th>
                                 <th>Keterangan</th>
                             </tr>
                             </thead>
