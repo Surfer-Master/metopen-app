@@ -56,7 +56,7 @@ if (isset($_SESSION["login"])) {
     <div class="shape2"></div>
     <div class="shape2"></div>
   </div>
-  <div class="container-fluid mt-5 ">
+  <div class="container-fluid mt-0 ">
     <div class="row">
       <div class="col-md-12">
         <div class="row justify-content-center">
