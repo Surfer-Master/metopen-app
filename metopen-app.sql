@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Bulan Mei 2023 pada 15.06
+-- Waktu pembuatan: 16 Bulan Mei 2023 pada 06.02
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -59,10 +59,9 @@ CREATE TABLE `asal_air` (
 --
 
 INSERT INTO `asal_air` (`id`, `asal`) VALUES
-(1, 'Bukit Kelam'),
-(2, 'PDAM Kubu Raya'),
-(3, 'Kota Bandung'),
-(4, 'Tanray');
+(1, 'Air Bukit Kelam'),
+(2, 'Air PDAM Kuburaya'),
+(3, 'Air PDAM Tanjung Raya');
 
 -- --------------------------------------------------------
 
@@ -140,7 +139,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `asal_air`
 --
 ALTER TABLE `asal_air`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `data`
