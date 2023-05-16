@@ -25,7 +25,7 @@ class DataModel extends Connection
 
     protected function findAllIndex()
     {
-        $sql = "SELECT DISTINCT asal, status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id";
+        $sql = "SELECT created_at, asal, ph_air, suhu_air, kekeruhan, suhu_lingkungan, kelembaban_lingkungan, status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id ORDER BY created_at DESC LIMIT 1";
         $result = $this->connect()->query($sql);
         if($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
