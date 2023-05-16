@@ -14,6 +14,7 @@ $datas = new DataView();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,13 +27,14 @@ $datas = new DataView();
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
+
 <body>
     <div class="d-flex border-dark bg-primary fixed-top">
         <div class="p-2 ms-5 flex-grow-1">
             <button class="btn btn-outline-dark text-center active">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-check" viewBox="0 0 16 16">
-                <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708L7.293 1.5Z"/>
-                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514Z"/>
+                    <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708L7.293 1.5Z" />
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514Z" />
                 </svg>
                 HOME
             </button>
@@ -41,10 +43,10 @@ $datas = new DataView();
             <a href="login.php">
                 <button class="btn btn-outline-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                     </svg>
-                    LOGIN                                      
+                    LOGIN
                 </button>
             </a>
         </div>
@@ -63,16 +65,16 @@ $datas = new DataView();
                     <div class="col-md-12 table-responsive text-center">
                         <table class="table table-striped align-middle" id="data_grafik_table">
                             <thead>
-                            <tr>
-                                <th>Asal Air</th>
-                                <th>Waktu Pengambilan Data</th>
-                                <th>PH Air</th>
-                                <th>Suhu Air (°C)</th>
-                                <th>Kekeruhan (NTU)</th>
-                                <th>Suhu Lingkungan (°C)</th>
-                                <th>Kelembaban (%)</th>
-                                <th>Keterangan</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-center">Asal Air</th>
+                                    <th class="text-center">Waktu Pengambilan Data</th>
+                                    <th class="text-center">PH Air</th>
+                                    <th class="text-center">Suhu Air (°C)</th>
+                                    <th class="text-center">Kekeruhan (NTU)</th>
+                                    <th class="text-center">Suhu Lingkungan (°C)</th>
+                                    <th class="text-center">Kelembaban (%)</th>
+                                    <th class="text-center">Keterangan</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <?php $datas->showIndex() ?>
@@ -93,7 +95,8 @@ $datas = new DataView();
             </div>
         </div>
     </div>
-<script src="public/js/bootstrap.bundle.min.js"></script>
-<script src="public/js/script.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/script.js"></script>
 </body>
+
 </html>
