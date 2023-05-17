@@ -8,6 +8,13 @@ class DataView extends DataController
         $no = 1;
         if ($datas != null) {
             foreach ($datas as $data) { ?>
+                <?php 
+                    if ($data['kelayakan'] == true) {
+                        $keterangan = "Layak Diminum";
+                    } else {
+                        $keterangan = "Tidak Layak Diminum";
+                    }
+                ?>
                 <tr>
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $data['created_at']/* = date("H:i:s") */ ?></td>
@@ -38,6 +45,13 @@ class DataView extends DataController
         $datas = $this->get_Data_Index();
         if ($datas != null) {
             foreach ($datas as $data) { ?>
+                <?php 
+                    if ($data['kelayakan'] == true) {
+                        $keterangan = "Layak Diminum";
+                    } else {
+                        $keterangan = "Tidak Layak Diminum";
+                    }
+                ?>
                 <tr>
                     <td class="text-start"><?php echo $data['asal'] ?></td>
                     <td class="text-start"><?php echo $data['created_at']/* = date("H:i:s") */ ?></td>
@@ -46,10 +60,10 @@ class DataView extends DataController
                     <td class="text-start"><?php echo $data['kekeruhan'] ?></td>
                     <td class="text-start"><?php echo $data['suhu_lingkungan'] ?></td>
                     <td class="text-start"><?php echo $data['kelembaban_lingkungan'] ?></td>
-                    <td class="text-start">Jernih</td>
+                    <td class="text-start"><?php echo $data['status'] ?></td>
                     <td class="text-start">
                         <span class="bg-success fw-bold text-white p-1 border-0 border-bottom rounded-2 ps-2 pe-2">
-                            <?php echo $data['status'] ?>
+                            <?php echo $keterangan ?>
                         </span>
                     </td>
                 </tr>
@@ -88,11 +102,18 @@ class DataView extends DataController
         $no = 1;
         if ($datas != null) {
             foreach ($datas as $data) { ?>
+                <?php 
+                    if ($data['kelayakan'] == true) {
+                        $keterangan = "Layak Diminum";
+                    } else {
+                        $keterangan = "Tidak Layak Diminum";
+                    }
+                ?>
                 <tr>
                     <td class="text-start"><?php echo $no ?></td>
                     <td class="text-start"><?php echo $data['asal'] ?></td>
-                    <td class="text-start">Jernih</td>
                     <td class="text-start"><?php echo $data['status'] ?></td>
+                    <td class="text-start"><?php echo $keterangan ?></td>
                     <td class="text-start">
                         <?php echo 
                             "<a class='text-decoration-none' href=''>
@@ -115,11 +136,18 @@ class DataView extends DataController
         $no = 1;
         if ($datas != null) {
             foreach ($datas as $data) { ?>
+                <?php 
+                    if ($data['kelayakan'] == true) {
+                        $keterangan = "Layak Diminum";
+                    } else {
+                        $keterangan = "Tidak Layak Diminum";
+                    }
+                ?>
                 <tr>
                     <td class="text-start"><?php echo $no ?></td>
                     <td class="text-start"><?php echo $data['asal'] ?></td>
-                    <td class="text-start">Jernih</td>
                     <td class="text-start"><?php echo $data['status'] ?></td>
+                    <td class="text-start"><?php echo $keterangan ?></td>
                     <td class="text-start">
                         <?php echo 
                             "<a class='text-decoration-none' href=''>
