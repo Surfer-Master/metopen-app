@@ -30,7 +30,7 @@ if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
         echo 'Data delay gagal disimpan';
         echo 'Exception: ' . $e->getMessage();
     }
-} else if (isset($data["ph_air"]) && isset($data["suhu_air"]) && isset($data["kekeruhan"]) && isset($data["suhu_lingkungan"]) && isset($data["kelembaban_lingkungan"]) && isset($data["status_air_id"]) && isset($data["kelayakan"])) {
+} else if (isset($data["ph_air"]) && isset($data["suhu_air"]) && isset($data["kekeruhan"]) && isset($data["suhu_lingkungan"]) && isset($data["kelembaban_lingkungan"]) && isset($data["asal_air_id"]) && isset($data["status_air_id"]) && isset($data["kelayakan"])) {
     try {
         $ph_air = $data['ph_air'];
         $suhu_air = $data['suhu_air'];
