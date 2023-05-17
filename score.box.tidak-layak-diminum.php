@@ -45,18 +45,18 @@ $datas = new DataView();
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="index.php" class="nav-link link-body-emphasis text-dashboard-item">
+                <a href="index.php" class="nav-link active text-dashboard-item">
                     Dashboard
                 </a>
-                <a href="index.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard">
+                <a href="index.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard">
                     <i class="bi bi-speedometer fs-5"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link active text-dashboard-item">
+                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
@@ -101,41 +101,42 @@ $datas = new DataView();
         <div class="container scrollarea">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
-                    <a href="" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Data Grafik</span>
+                    <a href="index.php" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
+                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Tidak Layak Diminum</span>
                     </a>
                 </div>
             </div>
             <div class="row m-2 mt-5">
-                <div class="col-md-12 shadow-lg border border-0 rounded-4 mt-5 mb-5">
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <a href="dashboard.php" class="text-decoration-none">
+                            <button type="button" class="btn btn-outline-warning"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 shadow-lg border border-0 rounded-4  border border-dark mb-5 mt-4">
                     <div class="row mb-2">
                         <div class="col-md-12 bg-primary text-center border-0 border-bottom rounded-top-4 p-2">
                             <span class="fs-5 text-white fw-bold">
-                                Tabel Semua Data Air
+                                Tabel Data Air Tidak Layak Diminum
                             </span>
                         </div>
                     </div>
                     <div class="container p-3">
                         <div class="col-md-12 table-responsive text-center">
-                            <table class="table table-striped align-middle" id="data_grafik_table">
+                            <table class="table table-striped align-middle" id="data_detail_score_box">
                                 <thead>
                                     <tr>
-                                        <th class="align-middle text-center">No</th>
-                                        <th class="align-middle text-center">Waktu</th>
-                                        <th class="align-middle text-center">PH Air</th>
-                                        <th class="align-middle text-center">Suhu Air (°C)</th>
-                                        <th class="align-middle text-center">Kekeruhan (NTU)</th>
-                                        <th class="align-middle text-center">Suhu Lingkungan (°C)</th>
-                                        <th class="align-middle text-center">Kelembaban (%)</th>
-                                        <th class="align-middle text-center">Asal Air</th>
-                                        <th class="align-middle text-center">Status</th>
-                                        <th class="align-middle text-center">Grafik</th>
+                                        <th>No</th>
+                                        <th>Asal Air</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $datas->show() ?>
+                                    <?php $datas->DetailTidakLayakMinum() ?>
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
