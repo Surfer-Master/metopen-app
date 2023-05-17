@@ -53,10 +53,10 @@ $datas = new DataView();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
+                <a href="data-tables.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="data-tables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
@@ -102,7 +102,7 @@ $datas = new DataView();
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
                     <a href="index.php" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Tidak Layak Diminum</span>
+                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Layak Diminum</span>
                     </a>
                 </div>
             </div>
@@ -118,7 +118,7 @@ $datas = new DataView();
                     <div class="row mb-2">
                         <div class="col-md-12 bg-primary text-center border-0 border-bottom rounded-top-4 p-2">
                             <span class="fs-5 text-white fw-bold">
-                                Tabel Data Air Tidak Layak Diminum
+                                Tabel Data Air Layak Diminum
                             </span>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ $datas = new DataView();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $datas->DetailTidakLayakMinum() ?>
+                                    <?php $datas->DetailLayakMinum() ?>
                                 </tbody>
                             </table>
                         </div>

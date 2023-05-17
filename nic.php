@@ -47,10 +47,10 @@ require 'conn.php';
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
+                <a href="data-tables.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="data-tables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
