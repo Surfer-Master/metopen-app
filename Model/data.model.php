@@ -57,52 +57,5 @@ class DataModel extends Connection
             return $datas;
         }
     }
-    // protected function scoreBoxLayakMinum()
-    // {
-    //     $sql = "SELECT COUNT(kelayakan) AS layak_diminum FROM data WHERE kelayakan = true";
-    //     $result = $this->connect()->query($sql);
-    //     if($result->num_rows > 0) {
-    //         while ($data = mysqli_fetch_assoc($result)) {
-    //             $datas[] = $data;
-    //         }
-    //         return $datas;
-    //     }
-    // }
-
-    // protected function detailScoreBoxLayakMinum()
-    // {
-    //     $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = true";
-    //     $result = $this->connect()->query($sql);
-    //     if($result->num_rows > 0) {
-    //         while ($data = mysqli_fetch_assoc($result)) {
-    //             $datas[] = $data;
-    //         }
-    //         return $datas;
-    //     }
-    // }
-    
-    // protected function scoreBoxTidakLayakMinum()
-    // {
-    //     $sql = "SELECT COUNT(kelayakan) AS tidak_layak_diminum FROM data WHERE kelayakan = false";
-    //     $result = $this->connect()->query($sql);
-    //     if($result->num_rows > 0) {
-    //         while ($data = mysqli_fetch_assoc($result)) {
-    //             $datas[] = $data;
-    //         }
-    //         return $datas;
-    //     }
-    // }
-
-    // protected function detailScoreBoxTidakLayakMinum()
-    // {
-    //     $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = false";
-    //     $result = $this->connect()->query($sql);
-    //     if($result->num_rows > 0) {
-    //         while ($data = mysqli_fetch_assoc($result)) {
-    //             $datas[] = $data;
-    //         }
-    //         return $datas;
-    //     }
-    // }
 }
 

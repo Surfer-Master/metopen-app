@@ -28,7 +28,6 @@ $datas = new DataView();
     <link rel="shortcut icon" href="public/image/untan.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
@@ -129,6 +128,7 @@ $datas = new DataView();
                                         <th class="align-middle text-center">Kelembaban (%)</th>
                                         <th class="align-middle text-center">Asal Air</th>
                                         <th class="align-middle text-center">Status</th>
+                                        <th class="align-middle text-center">Keterangan</th>
                                         <th class="align-middle text-center">Grafik</th>
                                     </tr>
                                 </thead>

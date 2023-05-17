@@ -25,9 +25,10 @@ class DataView extends DataController
                     <td><?php echo $data['kelembaban_lingkungan'] ?></td>
                     <td><?php echo $data['asal'] ?></td>
                     <td><?php echo $data['status'] ?></td>
+                    <td><?php echo $keterangan ?></td>
                     <td>
                         <?php echo
-                        "<a class='text-decoration-none' href='grafik.php?asal_air=" . $data['asal'] . "'>
+                        "<a class='text-decoration-none' href='grafik.php?asal-air=" . $data['asal'] . "'>
                                 <button class='btn btn-sm btn-info'>
                                     <i class='bi bi-journal-text me-2'></i>Tampilkan
                                 </button>
@@ -106,13 +107,14 @@ class DataView extends DataController
                 }
                 ?>
                 <tr>
-                    <td class="text-start"><?php echo $no ?></td>
-                    <td class="text-start"><?php echo $data['asal_air_asal'] ?></td>
-                    <td class="text-start"><?php echo $data['status_air_status'] ?></td>
-                    <td class="text-start"><?php echo $keterangan ?></td>
-                    <td class="text-start">
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $data['asal_air_asal'] ?></td>
+                    <td><?php echo $data['status_air_status'] ?></td>
+                    <td><?php echo $keterangan ?></td>
+                    <td><?php echo $data['created_at'] ?></td>
+                    <td>
                         <?php echo
-                        "<a class='text-decoration-none' href=''>
+                        "<a class='text-decoration-none' href='rincian-air-layak-diminum.php?asal-air=" . $data['asal_air_asal'] . "'>
                                 <button class='btn btn-sm btn-info'>
                                     <i class='bi bi-eye-fill me-2'></i></i>Rincian
                                 </button>
@@ -140,22 +142,21 @@ class DataView extends DataController
                 }
                 ?>
                 <tr>
-                    <td class="text-start"><?php echo $no ?></td>
-                    <td class="text-start"><?php echo $data['asal_air_asal'] ?></td>
-                    <td class="text-start"><?php echo $data['status_air_status'] ?></td>
-                    <td class="text-start"><?php echo $keterangan ?></td>
-                    <td class="text-start">
-                        <?php echo
-                        "<a class='text-decoration-none' href=''>
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $data['asal_air_asal'] ?></td>
+                    <td><?php echo $data['status_air_status'] ?></td>
+                    <td><?php echo $keterangan ?></td>
+                    <td><?php echo $data['created_at'] ?></td>
+                    <td> <?php echo
+                            "<a class='text-decoration-none' href='rincian-air-tidak-layak-diminum.php?asal-air=" . $data['asal_air_asal'] . "'>
                                 <button class='btn btn-sm btn-info'>
                                     <i class='bi bi-eye-fill me-2'></i></i>Rincian
                                 </button>
                             </a>";
-                        ?>
-                    </td>
+                            ?> </td>
                 </tr>
                 <?php $no++ ?>
-<?php
+            <?php
             }
         }
     }

@@ -93,7 +93,7 @@ require 'conn.php';
         </div>
     </div>
     <?php
-    $asal_air = $_GET['asal_air'];
+    $asal_air = $_GET['asal-air'];
     $query = "SELECT data.*, asal_air.asal FROM data INNER JOIN asal_air ON data.asal_air_id = asal_air.id WHERE asal = ?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("s", $asal_air);

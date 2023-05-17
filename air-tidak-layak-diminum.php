@@ -127,11 +127,12 @@ $datas = new DataView();
                             <table class="table table-striped align-middle" id="data_detail_score_box">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Asal Air</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
+                                        <th class="align-middle text-center">No</th>
+                                        <th class="align-middle text-center">Asal Air</th>
+                                        <th class="align-middle text-center">Status</th>
+                                        <th class="align-middle text-center">Keterangan</th>
+                                        <th class="align-middle text-center">Waktu</th>
+                                        <th class="align-middle text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
