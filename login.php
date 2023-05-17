@@ -23,7 +23,7 @@ if (isset($_SESSION["login"])) {
 </head>
 
 <body>
-  <div class="d-flex border-dark bg-primary shadow-sm">
+  <div class="d-flex border-dark bg-primary shadow-sm z-3 position-relative">
       <div class="p-2 ms-5 flex-grow-1">
         <a href="index.php">
           <button class="btn btn-outline-dark text-center" type="submit">
@@ -56,19 +56,21 @@ if (isset($_SESSION["login"])) {
     <div class="shape2"></div>
     <div class="shape2"></div>
   </div>
-  <div class="container-fluid mt-5 ">
+
+  <div class="d-flex z-3 position-relative">
+    <div class="p-2 ms-5 flex-grow-1">
+    </div>
+    <div class="p-2 me-5">
+      <div class="alert alert-danger alert-dismissible fade <?= isset($_SESSION["loginError"]) ? 'show' : ''; ?>" role="alert">
+        Login Gagal!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-1">
     <div class="row">
       <div class="col-md-12">
-        <div class="row justify-content-center">
-          <div class="col-3">
-            <div class="alert alert-danger alert-dismissible fade <?= isset($_SESSION["loginError"]) ? 'show' : ''; ?>" role="alert">
-              Login failed!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    
-            </div>
-          </div>
-        </div>
-    
         <form action="login-process.php" method="post">
           <div class="row">
             <div class="col-md-12">

@@ -47,9 +47,33 @@ class DataModel extends Connection
         }
     }
 
+    protected function detailScoreBoxLayakMinum()
+    {
+        $sql = "SELECT data.*, asal_air.asal FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id WHERE status = 'Layak Diminum'";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+    
     protected function scoreBoxTidakLayakMinum()
     {
         $sql = "SELECT COUNT(status) AS tidak_layak_diminum FROM data WHERE status = 'Tidak Layak Diminum'";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+
+    protected function detailScoreBoxTidakLayakMinum()
+    {
+        $sql = "SELECT data.*, asal_air.asal FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id WHERE status = 'Tidak Layak Diminum'";
         $result = $this->connect()->query($sql);
         if($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {

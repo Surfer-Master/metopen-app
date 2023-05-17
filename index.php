@@ -59,26 +59,25 @@ $datas = new DataView();
                         </span>
                     </div>
                 </div>
-                <div class="container p-3">
-                    <div class="col-md-12 table-responsive text-center">
-                        <table class="table table-striped align-middle" id="data_grafik_table">
-                            <thead>
-                            <tr>
-                                <th>Asal Air</th>
-                                <th>Waktu Pengambilan Data</th>
-                                <th>PH Air</th>
-                                <th>Suhu Air (°C)</th>
-                                <th>Kekeruhan (NTU)</th>
-                                <th>Suhu Lingkungan (°C)</th>
-                                <th>Kelembaban (%)</th>
-                                <th>Keterangan</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <?php $datas->showIndex() ?>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-12 table-responsive text-center py-3">
+                    <table class="table table-striped align-middle" id="data_grafik_table">
+                        <thead>
+                        <tr>
+                            <th>Asal Air</th>
+                            <th>Waktu <br>Pengambilan Data</th>
+                            <th>PH Air</th>
+                            <th>Suhu Air (°C)</th>
+                            <th>Kekeruhan (NTU)</th>
+                            <th>Suhu Lingkungan (°C)</th>
+                            <th>Kelembaban (%)</th>
+                            <th>Status Air</th>
+                            <th>Keterangan</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php $datas->showIndex() ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
