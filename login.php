@@ -20,6 +20,7 @@ if (isset($_SESSION["login"])) {
   <link rel="stylesheet" href="public/css/bootstrap.min.css" />
   <link rel="stylesheet" href="public/css/login.css">
   <link rel="stylesheet" href="public/css/style.css">
+  <link rel="shortcut icon" href="public/image/untan.png" />
 </head>
 
 <body>

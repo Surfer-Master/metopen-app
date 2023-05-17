@@ -18,7 +18,7 @@ require 'conn.php';
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Dashboard | Semua Grafik</title>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public/css/sidebars.css" />
     <link rel="shortcut icon" href="public/image/untan.png" />
@@ -201,6 +201,9 @@ require 'conn.php';
                                     <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kekeruhan</strong></h5>
                                 </div>
                                 <div class="card-body">
+                                    <div class="text-end">
+                                        <button class="btn btn-secondary btn-sm" onclick="resetKekeruhanAir()">Reset</button>
+                                    </div>
                                     <canvas class="my-4 w-100" id="chartKekeruhanAir" height="380"></canvas>
                                 </div>
                             </div>
@@ -215,6 +218,9 @@ require 'conn.php';
                                     <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Air</strong></h5>
                                 </div>
                                 <div class="card-body">
+                                    <div class="text-end">
+                                        <button class="btn btn-secondary btn-sm" onclick="resetSuhuAir()">Reset</button>
+                                    </div>
                                     <canvas class="my-4 w-100" id="chartSuhuAir" height="380"></canvas>
                                 </div>
                             </div>
@@ -229,6 +235,9 @@ require 'conn.php';
                                     <h5 class="mb-0 text-center"><strong class="text-white">Grafik PH Air</strong></h5>
                                 </div>
                                 <div class="card-body">
+                                    <div class="text-end">
+                                        <button class="btn btn-secondary btn-sm" onclick="resetPhAir()">Reset</button>
+                                    </div>
                                     <canvas class="my-4 w-100" id="chartPhAir" height="380"></canvas>
                                 </div>
                             </div>
@@ -243,6 +252,9 @@ require 'conn.php';
                                     <h5 class="mb-0 text-center"><strong class="text-white">Grafik Suhu Lingkungan</strong></h5>
                                 </div>
                                 <div class="card-body">
+                                    <div class="text-end">
+                                        <button class="btn btn-secondary btn-sm" onclick="resetSuhuLingkungan()">Reset</button>
+                                    </div>
                                     <canvas class="my-4 w-100" id="chartSuhuLingkungan" height="380"></canvas>
                                 </div>
                             </div>
@@ -257,6 +269,9 @@ require 'conn.php';
                                     <h5 class="mb-0 text-center"><strong class="text-white">Grafik Kelembaban</strong></h5>
                                 </div>
                                 <div class="card-body">
+                                    <div class="text-end">
+                                        <button class="btn btn-secondary btn-sm" onclick="resetKelembapanLingkungan()">Reset</button>
+                                    </div>
                                     <canvas class="my-4 w-100" id="chartKelembabanLingkungan" height="380"></canvas>
                                 </div>
                             </div>
@@ -268,7 +283,42 @@ require 'conn.php';
     </div>
 
     <script>
-        let options = {
+        // let options = {
+        //     scales: {
+        //         x: {
+        //             // type: 'time',
+        //             // time: {
+        //             //     displayFormats: {
+        //             //         quarter: 'MMM YYYY'
+        //             //     }
+        //             // }
+        //         },
+        //         y: {
+        //             // beginAtZero: true,
+        //         },
+        //     },
+        //     plugins: {
+        //         zoom: {
+        //             pan: {
+        //                 enabled: true
+        //             },
+        //             zoom: {
+        //                 wheel: {
+        //                     enabled: true,
+        //                 },
+        //                 mode: 'xy',
+        //             }
+        //         }
+        //     }
+        // };
+
+        let dataPhAir = <?= json_encode($dataPhAir) ?>;
+
+        let ctxPhAir = document.getElementById("chartPhAir").getContext("2d");
+        let chartPhAir = new Chart(ctxPhAir, {
+            type: 'line',
+            data: dataPhAir,
+            options: options = {
             scales: {
                 x: {
                     // type: 'time',
@@ -285,58 +335,174 @@ require 'conn.php';
             plugins: {
                 zoom: {
                     pan: {
-                        enabled: true
+                        enabled: true,
+                        mode: 'xy'
                     },
                     zoom: {
                         wheel: {
                             enabled: true,
                         },
-                        mode: 'xy',
+                        mode: 'x',
                     }
                 }
             }
-        };
+        }});
+        function resetPhAir(){
+            chartPhAir.resetZoom();
+        }
 
-        let dataPhAir = <?= json_encode($dataPhAir) ?>;
-
-        let ctxPhAir = document.getElementById("chartPhAir").getContext("2d");
-        let chartPhAir = new Chart(ctxPhAir, {
-            type: 'line',
-            data: dataPhAir,
-            options: options
-        });
 
         let dataSuhuAir = <?= json_encode($dataSuhuAir) ?>;
         let ctxSuhuAir = document.getElementById("chartSuhuAir").getContext("2d");
         let chartSuhuAir = new Chart(ctxSuhuAir, {
             type: 'line',
             data: dataSuhuAir,
-            options: options
-        });
+            options: options = {
+            scales: {
+                x: {
+                    // type: 'time',
+                    // time: {
+                    //     displayFormats: {
+                    //         quarter: 'MMM YYYY'
+                    //     }
+                    // }
+                },
+                y: {
+                    // beginAtZero: true,
+                },
+            },
+            plugins: {
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }});
+        function resetSuhuAir(){
+            chartSuhuAir.resetZoom();
+        }
 
         let dataKekeruhanAir = <?= json_encode($dataKekeruhanAir) ?>;
         let ctxKekeruhanAir = document.getElementById("chartKekeruhanAir").getContext("2d");
         let chartKekeruhanAir = new Chart(ctxKekeruhanAir, {
             type: 'line',
             data: dataKekeruhanAir,
-            options: options
-        });
+            options: options = {
+            scales: {
+                x: {
+                    // type: 'time',
+                    // time: {
+                    //     displayFormats: {
+                    //         quarter: 'MMM YYYY'
+                    //     }
+                    // }
+                },
+                y: {
+                    // beginAtZero: true,
+                },
+            },
+            plugins: {
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }});
+        function resetKekeruhanAir(){
+            chartKekeruhanAir.resetZoom();
+        }
 
         let dataSuhuLingkungan = <?= json_encode($dataSuhuLingkungan) ?>;
         let ctxSuhuLingkungan = document.getElementById("chartSuhuLingkungan").getContext("2d");
         let chartSuhuLingkungan = new Chart(ctxSuhuLingkungan, {
             type: 'line',
             data: dataSuhuLingkungan,
-            options: options
-        });
+            options: options = {
+            scales: {
+                x: {
+                    // type: 'time',
+                    // time: {
+                    //     displayFormats: {
+                    //         quarter: 'MMM YYYY'
+                    //     }
+                    // }
+                },
+                y: {
+                    // beginAtZero: true,
+                },
+            },
+            plugins: {
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }});
+        function resetSuhuLingkungan(){
+            chartSuhuLingkungan.resetZoom();
+        }
 
         let dataKelembabanLingkungan = <?= json_encode($dataKelembabanLingkungan) ?>;
         let ctxKelembabanLingkungan = document.getElementById("chartKelembabanLingkungan").getContext("2d");
         let chartKelembabanLingkungan = new Chart(ctxKelembabanLingkungan, {
             type: 'line',
             data: dataKelembabanLingkungan,
-            options: options
-        });
+            options: options = {
+            scales: {
+                x: {
+                    // type: 'time',
+                    // time: {
+                    //     displayFormats: {
+                    //         quarter: 'MMM YYYY'
+                    //     }
+                    // }
+                },
+                y: {
+                    // beginAtZero: true,
+                },
+            },
+            plugins: {
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }});
+        function resetKelembapanLingkungan(){
+            chartKelembabanLingkungan.resetZoom();
+        }
     </script>
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
