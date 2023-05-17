@@ -113,7 +113,7 @@ CREATE TABLE `status_air` (
 
 INSERT INTO `status_air` (`id`, `status`) VALUES
 (1, 'Jernih'),
-(2, 'keruh (sedang)'),
+(2, 'Keruh (sedang)'),
 (3, 'Keruh (tinggi)');
 
 --
