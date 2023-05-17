@@ -51,14 +51,14 @@ INSERT INTO `admin` (`id`, `name`, `username`, `password`, `created_at`, `update
 
 CREATE TABLE `asal_air` (
   `id` int(3) NOT NULL,
-  `nama` varchar(30) NOT NULL
+  `asal` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `asal_air`
 --
 
-INSERT INTO `asal_air` (`id`, `nama`) VALUES
+INSERT INTO `asal_air` (`id`, `asal`) VALUES
 (1, 'Bukit Kelam'),
 (2, 'PDAM Kubu Raya'),
 (3, 'Kota Bandung'),
@@ -77,7 +77,7 @@ CREATE TABLE `data` (
   `kekeruhan` float(5,2) DEFAULT NULL,
   `suhu_lingkungan` float(4,2) DEFAULT NULL,
   `kelembaban_lingkungan` float(5,2) DEFAULT NULL,
-  `asal_air_id` int(2) DEFAULT NULL,
+  `asal_air_id` int(3) DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -92,7 +92,7 @@ CREATE TABLE `data` (
 CREATE TABLE `nic` (
   `id` int(7) NOT NULL,
   `delay_time` int(7) DEFAULT NULL,
-  `asal_air_id` int(2) NOT NULL,
+  `asal_air_id` int(3) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

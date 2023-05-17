@@ -16,7 +16,7 @@ class DataView extends DataController
                     <td><?php echo $data['kekeruhan'] ?></td>
                     <td><?php echo $data['suhu_lingkungan'] ?></td>
                     <td><?php echo $data['kelembaban_lingkungan'] ?></td>
-                    <td><?php echo $data['asal_air'] ?></td>
+                    <td><?php echo $data['asal'] ?></td>
                     <td><?php echo $data['status'] ?></td>
                     <td><?php echo
                         "<a class='text-decoration-none' href='grafik.php' data-id=" . $data['id'] . ">
