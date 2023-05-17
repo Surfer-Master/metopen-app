@@ -15,7 +15,7 @@ class DataModel extends Connection
     {
         $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id";
         $result = $this->connect()->query($sql);
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
                 $datas[] = $data;
             }
@@ -25,9 +25,9 @@ class DataModel extends Connection
 
     protected function findAllIndex()
     {
-        $sql = "SELECT created_at, asal, ph_air, suhu_air, kekeruhan, suhu_lingkungan, kelembaban_lingkungan, status, kelayakan FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id ORDER BY created_at DESC LIMIT 1";
+        $sql = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id JOIN (SELECT asal_air_id, MAX(created_at) AS max_created_at FROM data GROUP BY asal_air_id ) AS max_created ON data.asal_air_id = max_created.asal_air_id AND data.created_at = max_created.max_created_at";
         $result = $this->connect()->query($sql);
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
                 $datas[] = $data;
             }
@@ -39,7 +39,7 @@ class DataModel extends Connection
     {
         $sql = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id JOIN (SELECT asal_air_id, MAX(created_at) AS max_created_at FROM data WHERE kelayakan = true GROUP BY asal_air_id ) AS max_created ON data.asal_air_id = max_created.asal_air_id AND data.created_at = max_created.max_created_at";
         $result = $this->connect()->query($sql);
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
                 $datas[] = $data;
             }
@@ -50,7 +50,7 @@ class DataModel extends Connection
     {
         $sql = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id JOIN (SELECT asal_air_id, MAX(created_at) AS max_created_at FROM data WHERE kelayakan = false GROUP BY asal_air_id ) AS max_created ON data.asal_air_id = max_created.asal_air_id AND data.created_at = max_created.max_created_at";
         $result = $this->connect()->query($sql);
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
                 $datas[] = $data;
             }
@@ -58,4 +58,3 @@ class DataModel extends Connection
         }
     }
 }
-

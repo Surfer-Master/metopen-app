@@ -64,17 +64,17 @@ $datas = new DataView();
                 <div class="col-md-12 table-responsive text-center py-3">
                     <table class="table table-striped align-middle" id="data_grafik_table">
                         <thead>
-                        <tr>
-                            <th>Asal Air</th>
-                            <th>Waktu <br>Pengambilan Data</th>
-                            <th>PH Air</th>
-                            <th>Suhu Air (°C)</th>
-                            <th>Kekeruhan (NTU)</th>
-                            <th>Suhu Lingkungan (°C)</th>
-                            <th>Kelembaban (%)</th>
-                            <th>Status Air</th>
-                            <th>Keterangan</th>
-                        </tr>
+                            <tr>
+                                <th class="align-middle text-center">Asal Air</th>
+                                <th class="align-middle text-center">Waktu <br>Pengambilan Data</th>
+                                <th class="align-middle text-center">PH Air</th>
+                                <th class="align-middle text-center">Suhu Air (°C)</th>
+                                <th class="align-middle text-center">Kekeruhan (NTU)</th>
+                                <th class="align-middle text-center">Suhu Lingkungan (°C)</th>
+                                <th class="align-middle text-center">Kelembaban (%)</th>
+                                <th class="align-middle text-center">Status Air</th>
+                                <th class="align-middle text-center">Keterangan</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <?php $datas->showIndex() ?>

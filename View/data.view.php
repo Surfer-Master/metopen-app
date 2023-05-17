@@ -54,15 +54,15 @@ class DataView extends DataController
                 }
                 ?>
                 <tr>
-                    <td class="text-start"><?php echo $data['asal'] ?></td>
-                    <td class="text-start"><?php echo $data['created_at']/* = date("H:i:s") */ ?></td>
-                    <td class="text-start"><?php echo $data['ph_air'] ?></td>
-                    <td class="text-start"><?php echo $data['suhu_air'] ?></td>
-                    <td class="text-start"><?php echo $data['kekeruhan'] ?></td>
-                    <td class="text-start"><?php echo $data['suhu_lingkungan'] ?></td>
-                    <td class="text-start"><?php echo $data['kelembaban_lingkungan'] ?></td>
-                    <td class="text-start"><?php echo $data['status'] ?></td>
-                    <td class="text-start">
+                    <td><?php echo $data['asal_air_asal'] ?></td>
+                    <td><?php echo $data['created_at']?></td>
+                    <td><?php echo $data['ph_air'] ?></td>
+                    <td><?php echo $data['suhu_air'] ?></td>
+                    <td><?php echo $data['kekeruhan'] ?></td>
+                    <td><?php echo $data['suhu_lingkungan'] ?></td>
+                    <td><?php echo $data['kelembaban_lingkungan'] ?></td>
+                    <td><?php echo $data['status_air_status'] ?></td>
+                    <td>
                         <span class="bg-success fw-bold text-white p-1 border-0 border-bottom rounded-2 ps-2 pe-2">
                             <?php echo $keterangan ?>
                         </span>
@@ -156,7 +156,7 @@ class DataView extends DataController
                             ?> </td>
                 </tr>
                 <?php $no++ ?>
-            <?php
+<?php
             }
         }
     }
