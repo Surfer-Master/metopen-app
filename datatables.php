@@ -120,16 +120,16 @@ $datas = new DataView();
                             <table class="table table-striped align-middle" id="data_grafik_table">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Waktu</th>
-                                        <th>PH Air</th>
-                                        <th>Suhu Air (°C)</th>
-                                        <th>Kekeruhan (NTU)</th>
-                                        <th>Suhu Lingkungan (°C)</th>
-                                        <th>Kelembaban (%)</th>
-                                        <th>Asal Air</th>
-                                        <th>Status</th>
-                                        <th>Grafik</th>
+                                        <th class="align-middle text-center">No</th>
+                                        <th class="align-middle text-center">Waktu</th>
+                                        <th class="align-middle text-center">PH Air</th>
+                                        <th class="align-middle text-center">Suhu Air (°C)</th>
+                                        <th class="align-middle text-center">Kekeruhan (NTU)</th>
+                                        <th class="align-middle text-center">Suhu Lingkungan (°C)</th>
+                                        <th class="align-middle text-center">Kelembaban (%)</th>
+                                        <th class="align-middle text-center">Asal Air</th>
+                                        <th class="align-middle text-center">Status</th>
+                                        <th class="align-middle text-center">Grafik</th>
                                     </tr>
                                 </thead>
                                 <tbody>

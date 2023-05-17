@@ -56,7 +56,6 @@ if (isset($_SESSION["login"])) {
     <div class="shape2"></div>
     <div class="shape2"></div>
   </div>
-
   <div class="d-flex z-3 position-relative">
     <div class="p-2 ms-5 flex-grow-1">
     </div>
@@ -67,7 +66,6 @@ if (isset($_SESSION["login"])) {
       </div>
     </div>
   </div>
-
   <div class="container-fluid mt-1">
     <div class="row">
       <div class="col-md-12">

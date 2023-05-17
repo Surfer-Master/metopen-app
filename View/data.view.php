@@ -28,7 +28,7 @@ class DataView extends DataController
                         ?>
                     </td>
                 </tr>
-<?php
+            <?php
             }
         }
     }
@@ -53,7 +53,7 @@ class DataView extends DataController
                         </span>
                     </td>
                 </tr>
-<?php
+            <?php
             }
         }
     }
@@ -64,8 +64,8 @@ class DataView extends DataController
         $no = 1;
         if ($datas != null) {
             foreach ($datas as $data) { ?>
-                <span><?php echo $data['layak_diminum']?></span>
-<?php
+                <span><?php echo $data['layak_diminum'] ?></span>
+            <?php
             }
         }
     }
@@ -76,7 +76,7 @@ class DataView extends DataController
         $no = 1;
         if ($datas != null) {
             foreach ($datas as $data) { ?>
-                <span><?php echo $data['tidak_layak_diminum']?></span>
+                <span><?php echo $data['tidak_layak_diminum'] ?></span>
 <?php
             }
         }
