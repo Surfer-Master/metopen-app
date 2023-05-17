@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Bulan Mei 2023 pada 06.02
+-- Waktu pembuatan: 17 Bulan Mei 2023 pada 16.01
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -77,7 +77,8 @@ CREATE TABLE `data` (
   `suhu_lingkungan` float(4,2) DEFAULT NULL,
   `kelembaban_lingkungan` float(5,2) DEFAULT NULL,
   `asal_air_id` int(3) DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
+  `status_air_id` int(3) DEFAULT NULL,
+  `kelayakan` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -94,6 +95,26 @@ CREATE TABLE `nic` (
   `asal_air_id` int(3) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `status_air`
+--
+
+CREATE TABLE `status_air` (
+  `id` int(3) NOT NULL,
+  `status` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `status_air`
+--
+
+INSERT INTO `status_air` (`id`, `status`) VALUES
+(1, 'Jernih'),
+(2, 'keruh (sedang)'),
+(3, 'Keruh (tinggi)');
 
 --
 -- Indexes for dumped tables
@@ -116,7 +137,8 @@ ALTER TABLE `asal_air`
 --
 ALTER TABLE `data`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_asal_air` (`asal_air_id`);
+  ADD KEY `fk_asal_air` (`asal_air_id`) USING BTREE,
+  ADD KEY `fk_status_air_id` (`status_air_id`) USING BTREE;
 
 --
 -- Indeks untuk tabel `nic`
@@ -124,6 +146,12 @@ ALTER TABLE `data`
 ALTER TABLE `nic`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_asal_air_nic` (`asal_air_id`);
+
+--
+-- Indeks untuk tabel `status_air`
+--
+ALTER TABLE `status_air`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -154,6 +182,12 @@ ALTER TABLE `nic`
   MODIFY `id` int(7) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `status_air`
+--
+ALTER TABLE `status_air`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
@@ -161,7 +195,8 @@ ALTER TABLE `nic`
 -- Ketidakleluasaan untuk tabel `data`
 --
 ALTER TABLE `data`
-  ADD CONSTRAINT `FK_asal_air` FOREIGN KEY (`asal_air_id`) REFERENCES `asal_air` (`id`);
+  ADD CONSTRAINT `FK_asal_air` FOREIGN KEY (`asal_air_id`) REFERENCES `asal_air` (`id`),
+  ADD CONSTRAINT `data_ibfk_1` FOREIGN KEY (`status_air_id`) REFERENCES `status_air` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `nic`
