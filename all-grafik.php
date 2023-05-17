@@ -94,324 +94,90 @@ require 'conn.php';
     </div>
 
     <?php
-    $query1 = "SELECT * FROM `data` WHERE asal_air_id = 1"; // Bukit Kelam
-    $stmt1 = $mysqli->prepare($query1);
-    $stmt1->execute();
-    $result1 = $stmt1->get_result();
+    $colors = [
+        1 => "red",
+        2 => "blue",
+        3 => "green",
+        4 => "yellow",
+        5 => "orange",
+        6 => "purple",
+        7 => "pink",
+        8 => "brown",
+        9 => "gray",
+        10 => "cyan"
+    ];
+    $query = "SELECT * FROM `asal_air`";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $query2 = "SELECT * FROM `data` WHERE asal_air_id = 2"; // PDAM Kubu Raya
-    $stmt2 = $mysqli->prepare($query2);
-    $stmt2->execute();
-    $result2 = $stmt2->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $query1 = "SELECT * FROM `data` WHERE asal_air_id = {$row['id']}";
+        $stmt1 = $mysqli->prepare($query1);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
 
-    $query3 = "SELECT * FROM `data` WHERE asal_air_id = 3"; // Kota Bandung
-    $stmt3 = $mysqli->prepare($query3);
-    $stmt3->execute();
-    $result3 = $stmt3->get_result();
+        $dataPhAir['datasets'][] = array(
+            'label' => $row['asal'],
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
+        $dataSuhuAir['datasets'][] = array(
+            'label' => $row['asal'],
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
+        $dataKekeruhanAir['datasets'][] = array(
+            'label' => $row['asal'],
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
+        $dataSuhuLingkungan['datasets'][] = array(
+            'label' => $row['asal'],
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
+        $dataKelembabanLingkungan['datasets'][] = array(
+            'label' =>  $row['asal'],
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
 
-    $query4 = "SELECT * FROM `data` WHERE asal_air_id = 4"; // Tanray
-    $stmt4 = $mysqli->prepare($query4);
-    $stmt4->execute();
-    $result4 = $stmt4->get_result();
+        while ($row1 = $result1->fetch_assoc()) {
+            $dataPhAir['labels'][] = '';
+            $dataPhAir['datasets'][$row['id'] - 1]['data'][] = $row1['ph_air'];
 
-    $dataPhAir = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Bukit Kelam",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataPhAir['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataPhAir['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataPhAir['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
+            $dataSuhuAir['labels'][] = '';
+            $dataSuhuAir['datasets'][$row['id'] - 1]['data'][] = $row1['suhu_air'];
 
-    $dataSuhuAir = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Suhu Air",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataSuhuAir['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataSuhuAir['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataSuhuAir['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
+            $dataKekeruhanAir['labels'][] = '';
+            $dataKekeruhanAir['datasets'][$row['id'] - 1]['data'][] = $row1['kekeruhan'];
 
-    $dataKekeruhanAir = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Kekeruhan Air",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
+            $dataSuhuLingkungan['labels'][] = '';
+            $dataSuhuLingkungan['datasets'][$row['id'] - 1]['data'][] = $row1['suhu_lingkungan'];
 
-    $dataSuhuLingkungan = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Suhu Lingkungan",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataSuhuLingkungan['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataSuhuLingkungan['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataSuhuLingkungan['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-
-    $dataKekeruhanAir = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Kekeruhan Air",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKekeruhanAir['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-
-    $dataKelembabanLingkungan = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Kelembaban Lingkungan",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-    $dataKelembabanLingkungan['datasets'][] = array(
-        'label' => "PDAM Kubu Raya",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "blue",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKelembabanLingkungan['datasets'][] = array(
-        'label' => "Kota Bandung",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "grey",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-    $dataKelembabanLingkungan['datasets'][] = array(
-        'label' => "Tanray",
-        'data' => array(),
-        'fill' => false,
-        'borderColor' => "green",
-        'borderWidth' => 2,
-        'tension' => 0.1
-    );
-
-    while ($row1 = $result1->fetch_assoc()) {
-        // $dataPhAir['labels'][] = $row['created_at'] = date("H:i:s");
-        $dataPhAir['labels'][] = $row1['created_at'];
-        $dataPhAir['datasets'][0]['data'][] = $row1['ph_air'];
-
-        $dataSuhuAir['labels'][] = $row1['created_at'];
-        $dataSuhuAir['datasets'][0]['data'][] = $row1['suhu_air'];
-
-        $dataKekeruhanAir['labels'][] = $row1['created_at'];
-        $dataKekeruhanAir['datasets'][0]['data'][] = $row1['kekeruhan'];
-
-        $dataSuhuLingkungan['labels'][] = $row1['created_at'];
-        $dataSuhuLingkungan['datasets'][0]['data'][] = $row1['suhu_lingkungan'];
-
-        $dataKelembabanLingkungan['labels'][] = $row1['created_at'];
-        $dataKelembabanLingkungan['datasets'][0]['data'][] = $row1['kelembaban_lingkungan'];
-    }
-    while ($row2 = $result2->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row2['created_at'];
-        $dataPhAir['datasets'][1]['data'][] = $row2['ph_air'];
-
-        $dataSuhuAir['labels'][] = $row2['created_at'];
-        $dataSuhuAir['datasets'][1]['data'][] = $row2['suhu_air'];
-
-        $dataKekeruhanAir['labels'][] = $row2['created_at'];
-        $dataKekeruhanAir['datasets'][1]['data'][] = $row2['kekeruhan'];
-
-        $dataSuhuLingkungan['labels'][] = $row2['created_at'];
-        $dataSuhuLingkungan['datasets'][1]['data'][] = $row2['suhu_lingkungan'];
-
-        $dataKelembabanLingkungan['labels'][] = $row2['created_at'];
-        $dataKelembabanLingkungan['datasets'][1]['data'][] = $row2['kelembaban_lingkungan'];
-    }
-    while ($row3 = $result3->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row3['created_at'];
-        $dataPhAir['datasets'][2]['data'][] = $row3['ph_air'];
-
-        $dataSuhuAir['labels'][] = $row3['created_at'];
-        $dataSuhuAir['datasets'][2]['data'][] = $row3['suhu_air'];
-
-        $dataKekeruhanAir['labels'][] = $row3['created_at'];
-        $dataKekeruhanAir['datasets'][2]['data'][] = $row3['kekeruhan'];
-
-        $dataSuhuLingkungan['labels'][] = $row3['created_at'];
-        $dataSuhuLingkungan['datasets'][2]['data'][] = $row3['suhu_lingkungan'];
-
-        $dataKelembabanLingkungan['labels'][] = $row3['created_at'];
-        $dataKelembabanLingkungan['datasets'][2]['data'][] = $row3['kelembaban_lingkungan'];
-    }
-    while ($row4 = $result4->fetch_assoc()) {
-        $dataPhAir['labels'][] = $row4['created_at'];
-        $dataPhAir['datasets'][3]['data'][] = $row4['ph_air'];
-
-        $dataSuhuAir['labels'][] = $row4['created_at'];
-        $dataSuhuAir['datasets'][3]['data'][] = $row4['suhu_air'];
-
-        $dataKekeruhanAir['labels'][] = $row4['created_at'];
-        $dataKekeruhanAir['datasets'][3]['data'][] = $row4['kekeruhan'];
-
-        $dataSuhuLingkungan['labels'][] = $row4['created_at'];
-        $dataSuhuLingkungan['datasets'][3]['data'][] = $row4['suhu_lingkungan'];
-
-        $dataKelembabanLingkungan['labels'][] = $row4['created_at'];
-        $dataKelembabanLingkungan['datasets'][3]['data'][] = $row4['kelembaban_lingkungan'];
+            $dataKelembabanLingkungan['labels'][] = '';
+            $dataKelembabanLingkungan['datasets'][$row['id'] - 1]['data'][] = $row1['kelembaban_lingkungan'];
+        }
     }
 
+    $stmt->close();
     $stmt1->close();
-    $stmt2->close();
-    $stmt3->close();
-    $stmt4->close();
     $mysqli->close();
     ?>
 

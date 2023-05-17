@@ -13,7 +13,67 @@ class DataModel extends Connection
 
     protected function findAll()
     {
-        $sql = "SELECT data.*, asal_air.asal FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id";
+        $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+
+    protected function findAllIndex()
+    {
+        $sql = "SELECT created_at, asal, ph_air, suhu_air, kekeruhan, suhu_lingkungan, kelembaban_lingkungan, status, kelayakan FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id ORDER BY created_at DESC LIMIT 1";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+
+    protected function scoreBoxLayakMinum()
+    {
+        $sql = "SELECT COUNT(kelayakan) AS layak_diminum FROM data WHERE kelayakan = true";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+
+    protected function detailScoreBoxLayakMinum()
+    {
+        $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = true";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+    
+    protected function scoreBoxTidakLayakMinum()
+    {
+        $sql = "SELECT COUNT(kelayakan) AS tidak_layak_diminum FROM data WHERE kelayakan = false";
+        $result = $this->connect()->query($sql);
+        if($result->num_rows > 0) {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $datas[] = $data;
+            }
+            return $datas;
+        }
+    }
+
+    protected function detailScoreBoxTidakLayakMinum()
+    {
+        $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = false";
         $result = $this->connect()->query($sql);
         if($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
@@ -24,4 +84,3 @@ class DataModel extends Connection
     }
 }
 
-?>

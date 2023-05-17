@@ -93,31 +93,49 @@ require 'conn.php';
     </div>
 
     <?php
-    $query = "SELECT * FROM nic";
+    $colors = [
+        1 => "red",
+        2 => "blue",
+        3 => "green",
+        4 => "yellow",
+        5 => "orange",
+        6 => "purple",
+        7 => "pink",
+        8 => "brown",
+        9 => "gray",
+        10 => "cyan"
+    ];
+
+    $query = "SELECT * FROM `asal_air`";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $dataDelay = array(
-        'labels' => array(),
-        'datasets' => array(
-            array(
-                'label' => "Delay",
-                'data' => array(),
-                'fill' => false,
-                'borderColor' => "red",
-                'borderWidth' => 2,
-                'tension' => 0.1
-            )
-        )
-    );
-
     while ($row = $result->fetch_assoc()) {
-        $dataDelay['labels'][] = $row['id'];
-        $dataDelay['datasets'][0]['data'][] = $row['delay_time'];
+        $query1 = "SELECT * FROM `nic` WHERE asal_air_id = {$row['id']}";
+        $stmt1 = $mysqli->prepare($query1);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+
+        $dataDelay['datasets'][] = array(
+            'label' => "Delay Data {$row['asal']}",
+            'data' => array(),
+            'fill' => false,
+            'borderColor' => $colors[$row['id']],
+            'borderWidth' => 2,
+            'tension' => 0.1
+        );
+        while ($row1 = $result1->fetch_assoc()) {
+            $dataDelay['labels'][] = $row1['id'];
+            $dataDelay['datasets'][$row['id'] - 1]['data'][] = $row1['delay_time'];
+        }
     }
 
+
+
+
     $stmt->close();
+    $stmt1->close();
     $mysqli->close();
 
     ?>
@@ -130,7 +148,7 @@ require 'conn.php';
                     </a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-1 justify-content-around">
                 <div class="col-md-12">
                     <div class="container scrollarea">
                         <div class="row mb-6 justify-content-around">
@@ -170,19 +188,19 @@ require 'conn.php';
                     // beginAtZero: true,
                 },
             },
-            plugins: {
-                zoom: {
-                    pan: {
-                        enabled: true
-                    },
-                    zoom: {
-                        wheel: {
-                            enabled: true,
-                        },
-                        mode: 'xy',
-                    }
-                }
-            }
+            // plugins: {
+            //     zoom: {
+            //         pan: {
+            //             enabled: true
+            //         },
+            //         zoom: {
+            //             wheel: {
+            //                 enabled: true,
+            //             },
+            //             mode: 'xy',
+            //         }
+            //     }
+            // }
         };
 
         let dataDelay = <?= json_encode($dataDelay) ?>;
