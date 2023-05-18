@@ -106,7 +106,14 @@ $datas = new DataView();
                 </div>
             </div>
             <div class="row m-2 mt-5">
-                <div class="col-md-12 shadow-lg border border-0 rounded-4 mt-5 mb-5">
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <a href="air-tidak-layak-diminum.php" class="text-decoration-none">
+                            <button type="button" class="btn btn-outline-warning"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 shadow-lg border border-0 rounded-4 mt-4 mb-5">
                     <div class="row mb-2">
                         <div class="col-md-12 bg-primary text-center border-0 border-bottom rounded-top-4 p-2">
                             <span class="fs-5 text-white fw-bold">
