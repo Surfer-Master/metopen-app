@@ -8,13 +8,13 @@ if (!isset($_SESSION["login"])) {
     exit();
 }
 
-include "conn.php";
+require 'conn.php';
 include "./Model/data.model.php";
 include "./Controller/data.controller.php";
 include "./View/data.view.php";
 $datas = new DataView();
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,13 +22,12 @@ $datas = new DataView();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Data Grafik</title>
+    <title>Dashboard | Rincian Air Tidak Layak Diminum</title>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public/css/sidebars.css" />
     <link rel="shortcut icon" href="public/image/untan.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
@@ -53,10 +52,10 @@ $datas = new DataView();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
+                <a href="data-tables.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="data-tables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
@@ -101,42 +100,67 @@ $datas = new DataView();
         <div class="container scrollarea">
             <div class="row">
                 <div class="col-md-12 pt-3 pb-3 border-bottom bg index">
-                    <a href="index.php" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
-                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Layak Diminum</span>
+                    <a href="" class="d-flex align-items-center me-md-auto text-dark text-decoration-none">
+                        <span class="fs-6 text-muted me-2">Dashboard </span><span class="fs-4 text-muted"> - </span><span class="ms-2 fs-6 fw-bold"> Data <?= $_GET['asal-air'] ?></span>
                     </a>
                 </div>
             </div>
             <div class="row m-2 mt-5">
-                <div class="row mt-5">
-                    <div class="col-md-12">
-                        <a href="dashboard.php" class="text-decoration-none">
-                            <button type="button" class="btn btn-outline-warning"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-12 shadow-lg border border-0 rounded-4  border border-dark mb-5 mt-4">
+                <div class="col-md-12 shadow-lg border border-0 rounded-4 mt-5 mb-5">
                     <div class="row mb-2">
                         <div class="col-md-12 bg-primary text-center border-0 border-bottom rounded-top-4 p-2">
                             <span class="fs-5 text-white fw-bold">
-                                Tabel Data Air Layak Diminum
+                                Tabel Semua Data <?= $_GET['asal-air'] ?>
                             </span>
                         </div>
                     </div>
                     <div class="container p-3">
                         <div class="col-md-12 table-responsive text-center">
-                            <table class="table table-striped align-middle" id="data_detail_score_box">
+                            <table class="table table-striped align-middle" id="data_grafik_table">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Asal Air</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
+                                        <th class="align-middle text-center">No</th>
+                                        <th class="align-middle text-center">Waktu</th>
+                                        <th class="align-middle text-center">PH Air</th>
+                                        <th class="align-middle text-center">Suhu Air (°C)</th>
+                                        <th class="align-middle text-center">Kekeruhan (NTU)</th>
+                                        <th class="align-middle text-center">Suhu Lingkungan (°C)</th>
+                                        <th class="align-middle text-center">Kelembaban (%)</th>
+                                        <th class="align-middle text-center">Asal Air</th>
+                                        <th class="align-middle text-center">Status</th>
+                                        <th class="align-middle text-center">Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $datas->DetailLayakMinum() ?>
+                                    <?php
+                                    $asal_air = $_GET['asal-air'];
+                                    $query = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = false && asal = ?";
+                                    $stmt = $mysqli->prepare($query);
+                                    $stmt->bind_param("s", $asal_air);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $no = 1;
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        if ($row['kelayakan'] == true) {
+                                            $keterangan = "Layak Diminum";
+                                        } else {
+                                            $keterangan = "Tidak Layak Diminum";
+                                        } ?>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $row['created_at'] ?></td>
+                                            <td><?= $row['ph_air'] ?></td>
+                                            <td><?= $row['suhu_air'] ?></td>
+                                            <td><?= $row['kekeruhan'] ?></td>
+                                            <td><?= $row['suhu_lingkungan'] ?></td>
+                                            <td><?= $row['kelembaban_lingkungan'] ?></td>
+                                            <td><?= $row['asal_air_asal'] ?></td>
+                                            <td><?= $row['status_air_status'] ?></td>
+                                            <td><?= $keterangan ?></td>
+                                        <?php } ?>
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

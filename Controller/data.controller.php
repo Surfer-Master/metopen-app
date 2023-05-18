@@ -12,24 +12,24 @@ class DataController extends DataModel
         return $this->findAllIndex();
     }
 
-    public function get_layak_diminum()
+    public function get_jumlah_layak_diminum()
     {
-        return $this->scoreBoxLayakMinum();
+        return $this->airLayakMinum();
     }
 
     public function get_detail_layak_diminum()
     {
-        return $this->detailScoreBoxLayakMinum();
+        return $this->airLayakMinum();
     }
     
-    public function get_Tidak_layak_diminum()
+    public function get_jumlah_tidak_layak_diminum()
     {
-        return $this->scoreBoxTidakLayakMinum();
+        return $this->airTidakLayakMinum();
     }
 
     public function get_detail_tidak_layak_diminum()
     {
-        return $this->detailScoreBoxTidakLayakMinum();
+        return $this->airTidakLayakMinum();
     }
 }
 

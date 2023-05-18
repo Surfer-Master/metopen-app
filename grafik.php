@@ -47,10 +47,10 @@ require 'conn.php';
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link active text-dashboard-item">
+                <a href="data-tables.php" class="nav-link active text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="data-tables.php" class="nav-link active icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
@@ -93,7 +93,7 @@ require 'conn.php';
         </div>
     </div>
     <?php
-    $asal_air = $_GET['asal_air'];
+    $asal_air = $_GET['asal-air'];
     $query = "SELECT data.*, asal_air.asal FROM data INNER JOIN asal_air ON data.asal_air_id = asal_air.id WHERE asal = ?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("s", $asal_air);

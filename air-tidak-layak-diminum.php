@@ -53,10 +53,10 @@ $datas = new DataView();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="datatables.php" class="nav-link link-body-emphasis text-dashboard-item">
+                <a href="data-tables.php" class="nav-link link-body-emphasis text-dashboard-item">
                     Data Grafik
                 </a>
-                <a href="datatables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
+                <a href="data-tables.php" class="nav-link link-body-emphasis icon-dashboard-item p-0 m-0 py-1 text-center" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Data Grafik">
                     <i class="bi bi-table fs-5"></i>
                 </a>
             </li>
@@ -127,11 +127,12 @@ $datas = new DataView();
                             <table class="table table-striped align-middle" id="data_detail_score_box">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Asal Air</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
+                                        <th class="align-middle text-center">No</th>
+                                        <th class="align-middle text-center">Asal Air</th>
+                                        <th class="align-middle text-center">Status</th>
+                                        <th class="align-middle text-center">Keterangan</th>
+                                        <th class="align-middle text-center">Waktu</th>
+                                        <th class="align-middle text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
