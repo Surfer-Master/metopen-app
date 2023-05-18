@@ -160,6 +160,9 @@ require 'conn.php';
                                                 <h5 class="mb-0 text-center"><strong class="text-white">Grafik Delay</strong></h5>
                                             </div>
                                             <div class="card-body">
+                                                <div class="text-end">
+                                                    <button class="btn btn-secondary btn-sm" onclick="resetDelay()">Reset</button>
+                                                </div>
                                                 <canvas class="my-4 w-100" id="chartDelay" height="380"></canvas>
                                             </div>
                                         </div>
@@ -174,20 +177,20 @@ require 'conn.php';
     </div>
 
     <script>
-        let options = {
-            scales: {
-                x: {
+        // let options = {
+        //     scales: {
+        //         x: {
                     // type: 'time',
                     // time: {
                     //     displayFormats: {
                     //         quarter: 'MMM YYYY'
                     //     }
                     // }
-                },
-                y: {
+                // },
+                // y: {
                     // beginAtZero: true,
-                },
-            },
+                // },
+            // },
             // plugins: {
             //     zoom: {
             //         pan: {
@@ -201,15 +204,45 @@ require 'conn.php';
             //         }
             //     }
             // }
-        };
+        // };
 
         let dataDelay = <?= json_encode($dataDelay) ?>;
         let ctxDelay = document.getElementById("chartDelay").getContext("2d");
         let chartDelay = new Chart(ctxDelay, {
             type: 'line',
             data: dataDelay,
-            options: options
-        });
+            options: options = {
+            scales: {
+                x: {
+                    // type: 'time',
+                    // time: {
+                    //     displayFormats: {
+                    //         quarter: 'MMM YYYY'
+                    //     }
+                    // }
+                },
+                y: {
+                    // beginAtZero: true,
+                },
+            },
+            plugins: {
+                zoom: {
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    },
+                    zoom: {
+                        wheel: {
+                            enabled: true,
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }});
+        function resetDelay(){
+            chartDelay.resetZoom();
+        }
     </script>
 
     <script src="public/js/bootstrap.bundle.min.js"></script>
