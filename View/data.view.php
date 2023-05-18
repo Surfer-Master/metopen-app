@@ -55,7 +55,7 @@ class DataView extends DataController
                 ?>
                 <tr>
                     <td><?php echo $data['asal_air_asal'] ?></td>
-                    <td><?php echo $data['created_at']?></td>
+                    <td><?php echo $data['created_at'] ?></td>
                     <td><?php echo $data['ph_air'] ?></td>
                     <td><?php echo $data['suhu_air'] ?></td>
                     <td><?php echo $data['kekeruhan'] ?></td>
@@ -76,9 +76,14 @@ class DataView extends DataController
     public function jumlahAirLayakMinum()
     {
         $datas = $this->get_jumlah_layak_diminum();
-        $jumlah = count($datas);
-        if ($datas != null) { ?>
+        if ($datas != null) {
+            $jumlah = count($datas);
+            ?>
             <span><?= $jumlah ?></span>
+        <?php
+        } else {
+        ?>
+            <span><?= 0 ?></span>
         <?php
         }
     }
@@ -86,9 +91,14 @@ class DataView extends DataController
     public function jumlahAirTidakLayakMinum()
     {
         $datas = $this->get_jumlah_tidak_layak_diminum();
-        $jumlah = count($datas);
-        if ($datas != null) { ?>
+        if ($datas != null) {
+            $jumlah = count($datas);
+        ?>
             <span><?= $jumlah ?></span>
+        <?php
+        } else {
+        ?>
+            <span><?= 0 ?></span>
             <?php
         }
     }
