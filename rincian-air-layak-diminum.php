@@ -141,7 +141,7 @@ $datas = new DataView();
                                 <tbody>
                                     <?php
                                     $asal_air = $_GET['asal-air'];
-                                    $query = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = true && asal = ?";
+                                    $query = "SELECT data.*, asal_air.asal AS asal_air_asal, status_air.status AS status_air_status FROM data JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id WHERE kelayakan = true && asal = ? ORDER BY created_at DESC";
                                     $stmt = $mysqli->prepare($query);
                                     $stmt->bind_param("s", $asal_air);
                                     $stmt->execute();

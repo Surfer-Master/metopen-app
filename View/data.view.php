@@ -125,10 +125,10 @@ class DataView extends DataController
                     <td>
                         <?php echo
                         "<a class='text-decoration-none' href='rincian-air-layak-diminum.php?asal-air=" . $data['asal_air_asal'] . "'>
-                                <button class='btn btn-sm btn-info'>
-                                    <i class='bi bi-eye-fill me-2'></i></i>Rincian
-                                </button>
-                            </a>";
+                            <button class='btn btn-sm btn-info'>
+                                <i class='bi bi-eye-fill me-2'></i></i>Rincian
+                            </button>
+                        </a>";
                         ?>
                     </td>
                 </tr>
