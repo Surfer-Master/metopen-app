@@ -13,7 +13,7 @@ class DataModel extends Connection
 
     protected function findAll()
     {
-        $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id";
+        $sql = "SELECT data.*, asal_air.asal, status_air.status FROM data LEFT OUTER JOIN asal_air ON data.asal_air_id = asal_air.id JOIN status_air ON data.status_air_id = status_air.id ORDER BY created_at DESC";
         $result = $this->connect()->query($sql);
         if ($result->num_rows > 0) {
             while ($data = mysqli_fetch_assoc($result)) {
